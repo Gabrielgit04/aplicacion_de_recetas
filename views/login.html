@@ -3,18 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles.css">
     <title>Inicio de sesion</title>
 </head>
 <body>
     <section class="container">
 
-        <div>
+        <div class="img_contain">
+            <article>
+                <h1>Bienvenido a Delicias de cocina</h1>
+                <h4>Aprende recetas tradicionales y agradables para tu paladar.</h4>
+            </article>
+        </div>
+        <section class="section_inside">
+
+            <div class="contain_inputs">
+            <h3>Inicio de sesion</h3>
+            <figure class="icon_login">
+                <img src="assets/imgs/woshishangjia.png" alt="">
+            </figure>
             
-        </div>
-        <div>
-            <input type="text" name="username" id="user" placeholder="Usuario" required>
-            <input type="password" name="contra" id="password" placeholder="Contraseña" required>
-        </div>
+            <form action="#" method="post">
+                
+                    <input type="text" name="username" id="user" placeholder="Usuario (max 30 caracteres)" required>
+                    <input type="password" name="contra" id="password" placeholder="Contraseña (max 12 caracteres)" required>
+                    <button>Ingresar</button>
+
+            </form>
+            </div>
+        </section>
 
     </section>
     

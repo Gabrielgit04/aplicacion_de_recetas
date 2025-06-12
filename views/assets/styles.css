@@ -1,0 +1,117 @@
+body{
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 500px 500px;
+    height: 500px;
+    margin: 0;
+    column-gap: 30px;
+}
+
+.img_contain{
+    background: url(imgs/chef_recetas.jpg) fixed left no-repeat ;
+    background-size: contain;
+    text-align: center;
+    height: 100vh;
+    font-family: "lemon", Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    text-shadow: 0 0 5px darkslategray;
+    margin: 0;
+    border-radius: 6px;
+}
+
+.contain_inputs{
+    display: flex;
+    flex-direction: column;
+    min-height: fit-content;
+    width:500px;
+    min-width: fit-content;
+    padding: 10px;
+    background-color:rgb(255, 255, 255);
+    box-shadow: 0 0 10px darkslategray;
+    border-radius: 6px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 25px;
+    z-index: 1;
+    font-family: "lemon", Arial, Helvetica, sans-serif;
+    backface-visibility: hidden;
+}
+.contain_inputs form{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-left: 50px;
+    padding: 15px;
+}
+
+.section_inside{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon_login{
+    display: flex;
+    justify-content: center;
+    min-height: fit-content;
+    margin-top: 0;
+}
+
+.contain_inputs img{
+    width: 110px;
+    height: 100px;
+    filter: drop-shadow(0 0 6px darkslategray);
+}
+
+.contain_inputs form #user,#password{
+    width: 85%;
+    height: 40px;
+    border-radius: 6px;
+    border: solid rgba(0, 0, 0, 0.5) 1px;
+    text-indent: 4px;
+    letter-spacing: 1.5px;
+}
+.contain_inputs form #user:focus::placeholder, form #password:focus::placeholder{
+    outline: solid #ffa726;
+    opacity: 0;
+    
+}
+.contain_inputs form #user:focus, form #password:focus{
+    outline: solid #ffa726;
+}
+
+
+form button{
+    width: 87%;
+    height: 40px;
+    border-radius: 6px;
+    border: solid #ffa726;
+    background-color: #ffa726;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
+    transition: all ease .4s;
+    box-shadow: 0 0 8px darkslategray;
+}
+
+form button:hover{
+    background-color: black;
+    color: #ffa726;
+    text-shadow: 0 0 8px #ffa726;
+    border-radius: 6px;
+    border:solid black;
+    transform: scale(1.03);
+    box-shadow: 0 0 8px #ffa726;
+}
+
+
+@font-face {
+    font-family: "lemon";
+    src: url(http://127.0.0.1:5500/views/assets/fonts/NCLLemonadeGloshrify-Regular.ttf) format("truetype");
+}
+
