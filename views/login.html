@@ -4,35 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/styles.css">
+    <link rel=" icon" href="assets/imgs/logo.jpg" type="image/x-icon">
     <title>Inicio de sesion</title>
 </head>
 <body>
     <section class="container">
 
-        <div class="img_contain">
-            <article>
-                <h1>Bienvenido a Delicias de cocina</h1>
-                <h4>Aprende recetas tradicionales y agradables para tu paladar.</h4>
-            </article>
-        </div>
-        <section class="section_inside">
-
-            <div class="contain_inputs">
-            <h3>Inicio de sesion</h3>
-            <figure class="icon_login">
-                <img src="assets/imgs/woshishangjia.png" alt="">
-            </figure>
+        <div class="semicirculo">
+            <img src="assets/imgs/logo.jpg" alt="logo_delicias_de_cocina">
+            <h1>Delicias de cocina</h1>
             
-            <form action="#" method="post">
-                
-                    <input type="text" name="username" id="user" placeholder="Usuario (max 30 caracteres)" required>
-                    <input type="password" name="contra" id="password" placeholder="Contraseña (max 12 caracteres)" required>
-                    <button>Ingresar</button>
 
+        </div>
+        <div class="login">
+
+            
+                <div class="login_box">
+            <header><h2>Inicio de sesión</h2></header>
+
+            <form action="#" method="post" autocomplete="off">
+        
+                <div class="input_area">
+                    <input type="text" name="username" class="entry"  placeholder="Usuario | Max 30 caracteres" required>
+                    <div class="labelline"><span><img src="assets/imgs/icon/icon_user.png" alt="icon" class="icon_user"></span></div>
+                </div>
+
+                <div class="input_password">
+                    <input type="password" class="entry_pass"   name="password"   placeholder="Contraseña | Max 15 caracteres" required>
+                    <div class="labelline_pass"><span><img src="assets/imgs/icon/icons8-lock-48.png" alt="icon" class="icon_user"></span>
+                    </div>
+                </div>
+                <article>
+                    <a href="#">¿Olvido su contraseña?</a>
+                </article>
+
+                <button>Ingresar</button>
             </form>
-            </div>
-        </section>
+            <a href="#" class="link_registro">Crea una cuenta</a>
 
+            
+        </div>
+    </div>
     </section>
     
 </body>
