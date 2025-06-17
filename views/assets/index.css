@@ -1,0 +1,309 @@
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+    background:url(imgs/back_gradient.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Inter",Arial, Helvetica, sans-serif;
+}
+header{
+    display: flex;
+    grid-area: header;
+    height: 70px;
+    padding: 10px 0;
+    justify-content: space-between;
+}
+
+.img_logo{
+    display: flex;
+    align-items: center;
+    margin-left: 0;
+    gap: 10px;
+    padding: 5px;
+    width: fit-content;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.img_logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+.img_logo h2{
+    text-transform: uppercase;
+}
+.box_contactandsingup{
+    display: flex;
+    align-items: center;
+    gap:0 50px;
+    margin-right: 20px;
+}
+#contact,#home{
+    text-decoration: none;
+    color: white;
+    letter-spacing: 1px;
+    border: transparent;
+    text-transform: uppercase;
+    outline: none;
+    transition: all ease .4s;
+}
+#contact:hover,#home:hover{
+    scale: 1.1;
+    transition: all ease .4s;
+    text-shadow:0 0 8px darkslategray;
+    border-bottom: solid whitesmoke;
+    outline: none;
+}
+
+#contact:active,#home:active{
+    scale: 0.9;
+    transition: all ease .3s;
+}
+
+.content{
+    margin-top: 30px;
+    padding: 30px;
+    text-indent: 10px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.content p{
+    font-weight: normal;
+    font-size: 16px;
+    width: 70%;
+    letter-spacing: 1.5px;
+}
+.content h3{
+    text-indent: 20px;
+    width: 60%;
+}
+.low_content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+    align-items: center;
+}
+.sign-in{
+    background-image: linear-gradient(to right,white 50%,transparent 50% 100%);
+    border-radius: 25px;
+    padding: 10px;
+    display: flex;
+    border: solid 1px white;
+    gap: 0 20px;
+    text-transform: uppercase;
+    transition: all ease .4s;
+    cursor: pointer;
+}
+
+.sign-in a:first-child{
+    color: #FF7D1B;
+    text-decoration: none;
+    font-size: 13px;
+    height: 100%;
+    margin-right: 4px;
+    letter-spacing: 1px;
+}
+.sign-in a:first-child:hover,.sign-in a:last-child:hover,.sign-in:hover{
+    scale: 1.1;
+    transition: all ease .4s;
+}
+.sign-in a:last-child{
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    margin-right: 6px;
+    letter-spacing: 1px;
+}
+.sign-in a:first-child:active,.sign-in a:last-child:active{
+    scale: 0.9;
+    transition: all ease .2s;
+
+}
+
+.menu{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3,minmax(150px, 2fr));
+    grid-template-rows: 155px;
+    margin-right: 80px;
+}
+.menu figure{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
+    width:160px;
+    border-radius: 20px;
+    margin-right: 80px;
+    transition: all ease .4s;
+}
+.menu figure:hover{
+    cursor: crosshair;
+    scale: 1.1;
+    transition: all ease .3s;
+    transform: translateX(10px);
+}
+
+.menu figure h4{
+    margin-bottom: 20px;
+    transform: translateY(-20px);
+    letter-spacing: 2px;
+    width: 100%;
+    text-align: center;
+    color: #f87009;
+}
+
+
+.menu figure img{
+    width: 96%;
+    padding:0 8px;
+    height: 90px;
+    margin-top: 3px;
+    border-radius:22px 22px 0 0 ;
+}
+
+button{
+    position: relative;
+    width: 180px;
+    height:40px;
+    border-radius: 26px;
+    font-size: 17px;
+    letter-spacing: 2px;
+    background-color: whitesmoke;
+    border: solid whitesmoke;
+    margin-left: 90px;
+}
+
+button a{
+    display: block;
+    width: 100% ;
+    text-decoration: none;
+    height: 100%;
+    margin-top: 5px;
+    color: #f87009;
+}
+
+button:hover{
+    background-color: rgba(0, 0, 0, 0.425);
+    text-shadow: 0 0 10px darkslategray;
+    scale: 1.1;
+    transition: all ease .4s;
+}
+
+button a:hover{
+    color: antiquewhite;
+}
+
+/* //importando fuente */
+@font-face {
+    font-family: "Inter";
+    src: url(http://127.0.0.1:5500/views/assets/fonts/Poppins-Black.ttf), format("truetype");
+}
+/* @keyframes aparicion{
+    from{
+            scale: 0;
+            opacity: 0;
+    }
+    to{
+            scale: 1;
+            opacity: 1;
+    
+    }
+} */
+
+@media( width < 450px) and (height > 600px){
+    body{
+        height: 75vh;
+    }
+
+    header{
+        justify-content: start;
+    }
+    .img_logo img{
+        width: 50px;
+        height: 45px;
+    }
+    
+    .img_logo h2{
+        font-size: 8px;
+        letter-spacing: 1px;
+        opacity: 0;
+    }
+    #contact,#home{
+        font-size: 10px;
+    }
+    .box_contactandsingup{
+        transform: translateX(-70px);
+        gap:0 17px;
+    }
+    .sign-in{
+        width: 100px;
+        height: 8px;
+        gap: 0 20px;
+    }
+
+    .sign-in a:first-child,.sign-in a:last-child{
+        font-size: 8px;
+        letter-spacing:0;
+    }
+    .sign-in a:first-child{
+        margin: 0 0 0px 8px;
+        letter-spacing:0;
+        transform: translateY(-4px);
+    }
+    .sign-in a:last-child{
+        margin-right: 5px;
+    }
+    .content{
+        gap: 40px 0;
+    }
+    .content p{
+        text-align:start;
+        width: 85%;
+    }
+    .content h3{
+        width: 80%;
+        font-size: 16px;
+    }
+    button{
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .low_content{
+        grid-template-columns: 1fr;
+        gap: 0px;
+        transform: translateY(-10px);
+    }
+    .menu{
+        grid-template-columns: repeat(3,90px);
+        grid-template-rows: 160px;
+        gap: 10px;
+        transform: translateX(-15px);
+    }
+    .menu figure h4{
+        font-size: 14px;
+        letter-spacing: 0px;
+        margin-bottom: 0;
+        transform: translateY(-10px);
+        
+    }
+    .menu figure .cenas{
+        height: 0px;
+    }
+
+    .menu figure{
+        width: 110px;
+        box-shadow: 0 0 8px darkslategray;
+    }
+    .menu figure:hover{
+        z-index: 1;
+    }
+}
+
+
