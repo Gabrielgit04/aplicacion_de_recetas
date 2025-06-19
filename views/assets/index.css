@@ -9,6 +9,7 @@ body{
     background-attachment: fixed;
     font-family: "Inter",Arial, Helvetica, sans-serif;
 }
+/* header de la pagina */
 header{
     display: flex;
     grid-area: header;
@@ -64,6 +65,9 @@ header{
     scale: 0.9;
     transition: all ease .3s;
 }
+/* hasta aqui el header de la pagina */
+
+/* contenido del medio */
 
 .content{
     margin-top: 30px;
@@ -82,12 +86,16 @@ header{
     text-indent: 20px;
     width: 60%;
 }
+/* hasta aca el cont-medio */
+
+/* footer de la pagina */
 .low_content{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0 20px;
     align-items: center;
 }
+/* boton de inicio y registro */
 .sign-in{
     background-image: linear-gradient(to right,white 50%,transparent 50% 100%);
     border-radius: 25px;
@@ -124,7 +132,9 @@ header{
     transition: all ease .2s;
 
 }
+/* hasta aca el boton */
 
+/* menu del footer */
 .menu{
     display: grid;
     gap: 20px;
@@ -177,6 +187,7 @@ button{
     background-color: whitesmoke;
     border: solid whitesmoke;
     margin-left: 90px;
+    transition: all ease .3s;
 }
 
 button a{
@@ -204,17 +215,8 @@ button a:hover{
     font-family: "Inter";
     src: url(http://127.0.0.1:5500/views/assets/fonts/Poppins-Black.ttf), format("truetype");
 }
-/* @keyframes aparicion{
-    from{
-            scale: 0;
-            opacity: 0;
-    }
-    to{
-            scale: 1;
-            opacity: 1;
-    
-    }
-} */
+
+/* responsive de la pagina */
 
 @media( width < 450px) and (height > 600px){
     body{
