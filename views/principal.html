@@ -3,23 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/principal.css">
     <title>Delicias de cocina</title>
 </head>
 <body>
     <section class="container">
+<!-- header de la vista -->
+        <header>
+            <figure><img src="assets/imgs/logo.jpg" alt="logo_delicias"></figure>
+            <span class="span-search">
+                <form action="" method="post">
+                    <button><img src="assets/imgs/icon/search.png" alt="search"></button>
+                    <input type="search" name="search" class="search" placeholder="Buscar receta | autor">
+                </form>
+            </span>
 
-        <header></header>
-        <section>
-            <nav>
+            <div class="span-perfil">
+                <button><img src="assets/imgs/icon/user.png" alt="user_icon"></button>
+            </div>
+                
+        </header>
+    <!-- hasta aca -->
+<hr>
+    <!-- menu para filtar -->
+        <section class="menu-filtrado">
+                <nav>
                     <ul>
-
-                    </ul>
-            </nav>
+                        <li><button class="escoger">☕Desayunos</button></li>
+                        <li><button class="escoger">🥘Almuerzos</button></li>
+                        <li><button class="escoger">🍝Cenas</button></li>
+                        <li><button class="escoger">🍰Postres</button></li>
+                        <li><button class="escoger">🥔Ingredientes</button></li>
+                    </ul>         
+                </nav>
         </section>
-        <section></section>
-        <section></section>
+    <hr class="line-downh">
+        <div class="header-two">
+            <h4>¡Bienvenido a Delicias de Cocina!</h4>
+        </div>
+        <!--<section></section>  -->
 
     </section>
+
+    <script>
+const botones = document.querySelectorAll('.escoger');
+
+botones.forEach(boton => {boton.addEventListener('click', () => {
+    botones.forEach(b => b.classList.remove('activa'));
+    boton.classList.add('activa');
+});
+});
+
+    </script>
     
 </body>
 </html>
