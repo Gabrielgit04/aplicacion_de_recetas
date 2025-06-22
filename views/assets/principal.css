@@ -210,7 +210,6 @@ hr{
     border-radius: 20px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.349);
-    
 }
 
 
@@ -251,6 +250,7 @@ hr{
     transform: translateY(2px);
     scale: 1.05;
     transition: all ease-in-out .3s;
+    z-index: 1;
 }
 
 .recetas-box figure button:hover{
@@ -264,6 +264,32 @@ hr{
 
 
 /* hasta aca */
+
+/* boton de agregar receta */
+
+.agregar{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 0 35px 30px 0;
+    width: 160px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #FF7D1B;
+    color: white;
+    border: solid 1px #FF7D1B;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.814);
+    letter-spacing: 1.2px;
+    font-weight: bold;
+}
+.agregar:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.882);
+    color: #FF7D1B;
+    text-shadow: 0 0 10px #FF7D1B;
+    transition: all ease-in-out .3s;
+    transform: translateY(-2px);
+}
 
 /*importando fuentes*/
 @font-face {
@@ -288,6 +314,7 @@ hr{
         align-items: center;
         height: fit-content;
         justify-content: center;
+        margin-top: 0px;
     }
 
     header figure img{
@@ -335,7 +362,7 @@ hr{
         height: 80px;
         padding: 2px;
         margin: 10px 0;
-        transform: translateX(38px);
+        transform: translateX(39px);
     }
     .header-two p{
         font-size: 11px;
