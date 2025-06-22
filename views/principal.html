@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/principal.css">
+    <link rel=" icon" href="assets/imgs/logo.jpg" type="image/x-icon">
     <title>Delicias de cocina</title>
 </head>
 <body>
@@ -25,7 +26,8 @@
         </header>
     <!-- hasta aca -->
 <hr>
-    <!-- menu para filtar -->
+        <span class="lineOne"></span>
+    <!-- menu para filtrar -->
         <section class="menu-filtrado">
                 <nav>
                     <ul>
@@ -37,22 +39,95 @@
                     </ul>         
                 </nav>
         </section>
+    <!-- hasta aca -->
+    <span class="lineTwo"></span>
+    <!-- segundo header -->
     <hr class="line-downh">
         <div class="header-two">
             <h4>¡Bienvenido a Delicias de Cocina!</h4>
+            <p>Descubre recetas increibles, conecta con otros amantes de la cocina y lleva tu habilidades culinaria al siguiente nivel.</p>
         </div>
-        <!--<section></section>  -->
+        <!-- hasta aca -->
+
+    <!-- recetas box -->
+        <section class="recetas-box">
+                <figure class="item-1">
+                    <img src="assets/imgs/img_platos/recetas/tequenos-de-queso-receta-venezolana.webp" alt="tequenos-de-queso-receta-venezolana">
+                    <article>
+                        <h6>Tequeños</h6>
+                    </article>
+                    <button>Ver receta</button>
+                </figure>
+    
+                <figure class="item-2">
+                    <img src="assets/imgs/img_platos/recetas/empanadas-de-carne-argentinas-tradicionales.webp" alt="empanadas-de-carne-argentinas-tradicionales">
+                    <article>
+                        <h6>Empanadas de carne argentina</h6>
+                    </article>
+                    <button>Ver receta</button>
+                </figure>
+    
+                <figure class="item-3">
+                    <img src="assets/imgs/img_platos/recetas/arepa-reina-pepiada-venezolana-receta.webp" alt="arepa_reina_pepiada">
+                    <article>
+                        <h6>Arepa reina pepiada</h6>
+                    </article>
+                    <button>Ver receta</button>
+                </figure>
+    
+                <figure class="item-4">
+                    <img src="assets/imgs/img_platos/recetas/bandeja-paisa-receta.webp" alt="bandeja-paisa-receta">
+                    <article>
+                        <h6>Bandeja paisa</h6>
+                    </article>
+                    <button>Ver receta</button>
+                </figure>
+    
+                <figure class="item-5">
+                    <img src="assets/imgs/img_platos/recetas/pollo-broaster-receta.webp" alt="pollo-broaster-receta">
+                    <article>
+                        <h6>Pollo a la broaster</h6>
+                    </article>
+                    <button>Ver receta</button>
+                </figure>
+    
+                <figure class="item-6">
+                    <img src="assets/imgs/img_platos/recetas/bolas-de-fraile-o-bombas-fritas-argentinas.webp" alt="bolas-de-fraile-o-bombas-fritas-argentinas">
+                    <article>
+                        <h6>Bombas fritas</h6>
+                    </article>
+                    <button>Ver receta</button>
+                </figure>
+    
+                <figure class="item-7">
+                    <img src="assets/imgs/img_platos/recetas/chorrillana-receta-chilena.webp" alt="chorrillana-receta-chilena">
+                    <article>
+                        <h6>Chorillana chilena</h6>
+                    </article>
+                    <button>Ver receta</button>
+                </figure>
+    
+                <figure class="item-8">
+                    <img src="assets/imgs/img_platos/recetas/tarta-tres-leches-casera-receta.webp" alt="tarta-tres-leches-casera-receta">
+                    <article>
+                        <h6>Tarta tres leches</h6>
+                    </article>
+                    <button>Ver receta</button>
+                </figure>
+    
+            <!-- Agrega más recetas según sea necesario -->
+        </section> 
 
     </section>
 
     <script>
-const botones = document.querySelectorAll('.escoger');
+            const botones = document.querySelectorAll('.escoger');
 
-botones.forEach(boton => {boton.addEventListener('click', () => {
-    botones.forEach(b => b.classList.remove('activa'));
-    boton.classList.add('activa');
-});
-});
+            botones.forEach(boton => {boton.addEventListener('click', () => {
+                botones.forEach(b => b.classList.remove('activa'));
+                boton.classList.add('activa');
+            });
+            });
 
     </script>
     

@@ -2,6 +2,10 @@ body{
     margin: 0;
     background-color: #FEF3EF;
     font-family: "Inter",Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+.container{
+    padding: 15px;
 }
 
 /* comienza el header */
@@ -39,8 +43,12 @@ header figure img{
     letter-spacing: 2px;
     text-indent: -10px;
 }
+.search:focus::placeholder{
+    color: transparent;
+}
 .span-perfil button{
     background-color: white;
+    cursor: pointer;
 }
 
 button{
@@ -140,6 +148,22 @@ hr{
     text-shadow: 0 0 5px white;
 }
 
+.lineOne{
+    content: " ";
+    width: 150%;
+    margin-bottom: 6px;
+    height: 1px;
+    background-color: #FF7D1B;
+}
+.lineTwo{
+    content: " ";
+    width: 150%;
+    margin-top: 6px;
+    height: 3px;
+    background-color: #FF7D1B;
+}
+
+
 /* hasta aca el menu */
 
 /* header secundario de bienvenido */
@@ -147,7 +171,7 @@ hr{
 .header-two{
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 7px;
     background-image: url(imgs/back_gradient.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -155,18 +179,174 @@ hr{
     background-attachment: fixed;
     text-align: center;
     letter-spacing: 1.5px;
-    border-radius: 45px;
+    border-radius: 60px;
     margin: 10px 35px;
+    height: 90px;
 }
 
 .header-two h4{
     color:white;
 }
+.header-two p{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    margin-top: 0;
+}
 
 /* hasta aca el header secuandario */
+/* aca empieza el apartado donde se muestran las recetas */
+
+.recetas-box{
+    display: grid;
+    grid-template-columns: repeat(4,minmax(100px, 1fr));
+    gap: 15px;
+    padding: 15px;
+}
+.recetas-box figure{
+    width: 190px;
+    height:150px;
+    margin-left: 30px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.349);
+    
+}
+
+
+.recetas-box figure img{
+    width: 96%;
+    margin: 2px 4px;
+    height: 80px;
+    border: solid 1px white;
+    border-radius: 18px 18px 0 0;
+    object-fit: cover;
+}
+.recetas-box  figure article{
+    min-height: fit-content;
+    transform: translateY(-12px);
+}
+
+.recetas-box figure h6{
+    text-align: justify;
+    transform: translateY(5px);
+    text-indent: 6px;
+    font-size: 10px;
+    margin-top: 5px;
+    color: #000000da;
+}
+
+.recetas-box figure button{
+    width: 85%;
+    height: 20px;
+    padding: 2px 0;
+    font-weight: bold;
+    background-color: #FF7D1B;
+    transform: translate(15px, -12px);
+    color: white;
+}
+.recetas-box figure:hover{
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.782);
+    transform: translateY(2px);
+    scale: 1.05;
+    transition: all ease-in-out .3s;
+}
+
+.recetas-box figure button:hover{
+    background-color: rgba(0, 0, 0, 0.745);
+    color: #FF7D1B;
+    text-shadow: 0 0 10px #FF7D1B;
+    transition: all ease-in-out .3s;
+    transform: translate(15px, -12px);
+    cursor: pointer;
+}
+
+
+/* hasta aca */
 
 /*importando fuentes*/
 @font-face {
     font-family: "Inter";
     src: url(http://127.0.0.1:5500/views/assets/fonts/Poppins-Black.ttf), format("truetype");
+}
+
+/* responsive design */
+@media (max-width: 450px) {
+
+    .container{
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    header{
+        flex-direction: row;
+        align-items: center;
+        height: fit-content;
+        justify-content: center;
+    }
+
+    header figure img{
+        opacity: 0;
+        visibility: hidden;    }
+
+    .search{
+        width: 330px;
+        height: 35px; 
+    }
+    .search::placeholder{
+        text-align: center;
+        font-size: 10px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-indent: 12.5px;
+    }
+    .span-search button img{
+        width: 20px;
+        height: 20px;
+        transform: translate(-40px, 26px);
+    }
+
+    .span-perfil button{
+        width: 40px;
+        height: 40px;
+        transform: translate(-30px, 13px);
+    }
+    .span-perfil button img{
+        width: 30px;
+        height: 30px;
+    }
+
+    .recetas-box{
+        grid-template-columns: repeat(2,minmax(100px, 1fr));
+        padding: 10px;
+        gap:5px 50px;
+    }
+    .recetas-box figure{
+        width: 120%;
+        height: 150px;
+    }
+    .header-two{
+        width: 120%;
+        height: 80px;
+        padding: 2px;
+        margin: 10px 0;
+        transform: translateX(38px);
+    }
+    .header-two p{
+        font-size: 11px;
+        text-align: center;
+        letter-spacing: 0px;
+        transform: translateY(-10px);
+        padding:0 10px;
+    }
+    .menu-filtrado nav ul{
+        align-items: center;
+        gap: 5px 2px;
+        margin-left: 55px;
+    }
 }

@@ -172,6 +172,7 @@ header{
 .menu figure img{
     width: 96%;
     padding:0 8px;
+    object-fit: cover;
     height: 90px;
     margin-top: 3px;
     border-radius:22px 22px 0 0 ;
