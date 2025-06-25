@@ -6,6 +6,7 @@ body{
 }
 .container{
     padding: 15px;
+    animation: aparicion 2s ease-in-out;
 }
 
 /* comienza el header */
@@ -136,7 +137,7 @@ hr{
 .menu-filtrado nav ul li:hover{
     transition: all ease-in-out .4s;
     border-radius: 3px;
-    border-left:solid 2px darkslategray;
+    border-bottom:solid 2px darkslategray;
 }
 
 .escoger:active{
@@ -172,7 +173,7 @@ hr{
     display: flex;
     flex-direction: column;
     padding: 7px;
-    background-image: url(imgs/back_gradient.jpg);
+    background-image: linear-gradient(45deg,#db6821 35%,#dc7316 55%,#f29d36 70%,#efb813 100%);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -291,6 +292,157 @@ hr{
     transform: translateY(-2px);
 }
 
+/* agregar recetas dialogo */
+.formulario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid  white;
+    row-gap: 15px;
+}
+.dialog{
+    gap: 15px 0;
+}
+
+.dialog_add{
+    flex-direction: column;
+    width: 35%;
+    height: 90%;
+    padding: 8px;
+    z-index: 10;
+    border-radius: 20px 0 20px 0;
+    border: solid  white;
+    row-gap: 10px 0;
+    overflow:visible;
+    transition: all ease-in-out .3s;
+}
+/* inputs y textareas */
+.dialog_add input[type="text"]{
+    height: 50px;
+    width: 96%;
+    border-radius: 7px;
+    border: solid 1px #DDDDDD;
+    background-color: #DDDDDD;
+    padding: 3px;
+    text-indent: 10px;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+    row-gap: 15px;
+    margin-top: 10px;
+}
+
+.dialog_add input[type="text"]:focus{
+    outline: none;
+    border: solid 1px #FF7D1B;
+}
+
+.dialog_add textarea{
+    height: 80px;
+    width: 95%;
+    border-radius: 7px;
+    border: solid 1px #DDDDDD;
+    background-color: #DDDDDD;
+    resize: none;
+    text-indent: 10px;
+    padding: 5px;
+}
+.dialog_add textarea:focus{
+    outline: none;
+    border: solid 1px #FF7D1B;
+}
+.dialog_add input[type="text"]::placeholder,.dialog_add textarea::placeholder{
+    color: #000000b3;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    text-indent: 10px;
+}
+
+.dialog_add input[type="text"]:focus::placeholder,.dialog_add textarea:focus::placeholder{
+    color: transparent;
+}
+
+input[type="file"]{
+    width: 95.1%;
+    height: 20px;
+    border-radius: 7px;
+    border: solid 1px #DDDDDD;
+    background-color: #DDDDDD;
+    padding: 6px;
+    font-size: 12px;
+    text-indent: 10px;
+    margin:10px  2px 10px 2px;
+    overflow: hidden;
+}
+
+select{
+    width: 95%;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    background-color:#DDDDDD;
+    padding: 6px;
+    font-weight: bold;
+    border: solid 1px #DDDDDD;
+    color: #FF7D1B;
+    margin:0  10px 25px 10px;
+}
+
+.dialog_add select option{
+    background-color: #dddddd65;
+    color: #FF7D1B;
+    font-weight: bold;
+}
+select:focus{
+    outline: none;
+    border: solid 1px #FF7D1B;
+}
+
+.dialog_add .save{
+    width: 95%;
+    height: 40px;
+    border-radius: 7px;
+    border: solid 1px #FF7D1B;
+    background-color: #FF7D1B;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    margin: 0 10px 5px 10px;
+}
+
+
+/* hasta aca */
+
+.dialog_add .header-dialog{
+    display: flex;
+    flex-direction: row;
+    width: 98%;
+    margin: 0;
+    align-items: center;
+    border: solid;
+    height:40px;
+    color: white;
+    padding: 2px;
+    border-radius: 20px 0 20px 0;
+    letter-spacing: 1.4px;
+    background-color: #FF7D1B;
+}
+.dialog_add .header-dialog button{
+    width: fit-content;
+    padding: 4px;
+    border-radius: 10px 0 10px 0;
+    transform: translate(342px,-7px);
+    background-color: #FEF3EF;
+
+}
+
+/* hasta aca */
+
 /*importando fuentes*/
 @font-face {
     font-family: "Inter";
@@ -374,6 +526,49 @@ hr{
     .menu-filtrado nav ul{
         align-items: center;
         gap: 5px 2px;
-        margin-left: 55px;
+        margin-left: 70px;
+
     }
+
+    .escoger{
+        font-size: 9px;
+    }
+
+
+    /* dialog reposive */
+
+    .formulario{
+        width: 100%;
+    
+    }
+    .dialog_add{
+        width: 300px;
+        height: 500px;
+        z-index: 1;
+    }
+
+    .agregar{
+        z-index: 0;
+    }
+
+    .dialog_add .header-dialog button{
+        transform: translate(268px,-7px);
+    }
+}
+
+@keyframes aparicion {
+
+    from{
+        opacity: 0;
+        scale: 0.5;
+        
+
+    }
+    to{
+        opacity: 1;
+        scale: 1;
+        
+
+    }
+    
 }

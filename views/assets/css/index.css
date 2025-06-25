@@ -2,7 +2,7 @@ body{
     box-sizing: border-box;
     margin: 0;
     padding:0;
-    background:url(imgs/back_gradient.jpg);
+    background:linear-gradient(45deg,#dc6e29 35%,#df7212 55%,#f08b0f 70%,#efb813 100%);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
