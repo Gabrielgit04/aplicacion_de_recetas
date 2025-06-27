@@ -10,7 +10,7 @@ body{
 }
 
 /* comienza el header */
-header{
+.container header{
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -18,11 +18,11 @@ header{
     margin-top:30px ;
 }
 
-header figure{
+.container header figure{
     margin-left: 0px;
     margin-top: 20px;
 }
-header figure img{
+.container header figure img{
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -52,24 +52,24 @@ header figure img{
     cursor: pointer;
 }
 
-button{
+.container header button{
     background-color: transparent;
     border: none;
     outline: transparent;
     border-radius: 50px;
 }
 
-button  img{
+.container header button  img{
     width: 50px;
     height: 50px;
 }
 
-span button img{
+.container header span button img{
     width: 30px;
     height: 30px;
     background-color: transparent;
 }
-header span{
+.container header span{
     margin-left: 0px;
     display: flex;
     justify-content: center;
@@ -77,7 +77,7 @@ header span{
     margin-right: 10px;
     
 }
-span button{
+.container header span button{
     transform: translate(50px, 11px);
     cursor: pointer;
 }
@@ -241,6 +241,8 @@ hr{
     height: 20px;
     padding: 2px 0;
     font-weight: bold;
+    border-radius: 35px;
+    border: #FF7D1B;
     background-color: #FF7D1B;
     transform: translate(15px, -12px);
     color: white;
@@ -315,6 +317,10 @@ hr{
     row-gap: 10px 0;
     overflow:visible;
     transition: all ease-in-out .3s;
+}
+.dialog_add::backdrop{
+    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.662);
 }
 /* inputs y textareas */
 .dialog_add input[type="text"]{
@@ -439,6 +445,172 @@ select:focus{
     transform: translate(342px,-7px);
     background-color: #FEF3EF;
 
+}
+
+/* hasta aca */
+
+/* description_view */
+
+.container-description{
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    row-gap:2px;
+    background-color: #fce4db;
+    border: solid;
+}
+.back-and-imgreceta{
+    height: 99vh;
+    
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-and-imgreceta header{
+    display: flex;
+    width:350px;
+    height: 60px;
+    margin: 30px 0px 0px 0px;
+}
+.volver a{
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 5px;
+    border: solid 1px rgba(0, 0, 0, 0.707);
+    padding: 4px 10px ;
+    gap: 5px;
+    width: 130px;
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left:0;
+
+}
+.img-plato{
+    padding: 5px 8px;
+    border-radius: 24px;
+    height: 400px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+.img-plato img{
+    margin-top:0 ;
+    width: 330px;
+    height: 390px;
+    border-radius: 20px;
+}
+.back-and-imgreceta  h4{
+    background-image: linear-gradient(45deg,#db6821 35%,#dc7316 55%,#f29d36 70%,#efb813 100%);
+    padding:5px 8px;
+    width: 130px;
+    border-radius: 30px;
+    color: white;
+    text-align: center;
+    transform: translate(-26px,-5px);
+}
+
+.description-receta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 25px;
+}
+
+.instructions{
+    width: 100%;
+    height: 45%;
+    background-color: transparent;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-30px,-50px);
+}
+.ingredients article,.instructions article{
+    height: 10px;
+    padding: 0;
+    margin-bottom: 12px;
+    margin-left: 20px;
+    display: flex;
+    align-items: start;
+    width: 100%;
+}
+
+
+
+
+.ingredients nav,.instructions nav{
+    width: 100%;
+    height: 80%;
+    background-color: white;
+    border-radius: 20px;
+    margin-top: 30px;
+
+}
+.ingredients article h4,.instructions article h4{
+    font-size: 13px;
+    background-color: #FF7D1B;
+    color: white;
+    padding: 4px;
+    width: 120px;
+    border-radius: 20px;
+    text-align: center;
+    letter-spacing: 1.5px;
+}
+
+.ingredients{
+    transform: translate(-30px,-30px);
+    width: 100%;
+    height: 40%;
+    background-color: transparent;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.description-receta header{
+    color: rgba(0, 0, 0, 0.816);
+    width: 100%;
+    height: fit-content;
+    transform: translate(-40px,10px);
+
+}
+.description-receta header h2{
+    letter-spacing: 1.4px;
+    font-size: 32px;
+}
+
+.ingredients nav ul,.instructions nav ul{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+}
+
+.instructions nav ul{
+    list-style-type: none;
+    gap: 10px;
+}
+
+.ingredients nav ul li{
+    font-size: 11px;
+    gap: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.instructions nav ul li{
+    font-size: 11px;
+    gap: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.instructions nav ul{
+    gap: 10px;
 }
 
 /* hasta aca */
