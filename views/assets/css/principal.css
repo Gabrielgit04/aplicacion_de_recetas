@@ -299,7 +299,6 @@ hr{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid  white;
     row-gap: 15px;
 }
 .dialog{
@@ -314,7 +313,7 @@ hr{
     z-index: 10;
     border-radius: 20px 0 20px 0;
     border: solid  white;
-    row-gap: 10px 0;
+    row-gap: 8px 0;
     overflow:visible;
     transition: all ease-in-out .3s;
 }
@@ -349,7 +348,7 @@ hr{
 }
 
 .dialog_add textarea{
-    height: 80px;
+    height: 45px;
     width: 95%;
     border-radius: 7px;
     border: solid 1px #DDDDDD;
@@ -369,6 +368,17 @@ hr{
     text-indent: 10px;
 }
 
+#porcion{
+    height: 20px;
+    width:100px;
+    border-radius: 7px;
+    border: solid 1px #DDDDDD;
+    background-color: #DDDDDD;
+    padding: 3px;
+    text-indent: 10px;
+
+
+}
 .dialog_add input[type="text"]:focus::placeholder,.dialog_add textarea:focus::placeholder{
     color: transparent;
 }
@@ -387,15 +397,14 @@ input[type="file"]{
 }
 
 select{
-    width: 95%;
-    margin-bottom: 30px;
+    width: 60%;
     border-radius: 5px;
     background-color:#DDDDDD;
     padding: 6px;
     font-weight: bold;
     border: solid 1px #DDDDDD;
     color: #FF7D1B;
-    margin:0  10px 25px 10px;
+    margin:0  10px 10px 10px;
 }
 
 .dialog_add select option{
@@ -418,7 +427,7 @@ select:focus{
     font-weight: bold;
     letter-spacing: 1.2px;
     cursor: pointer;
-    margin: 0 10px 5px 10px;
+    margin: 10px 10px 5px 10px;
 }
 
 
@@ -472,21 +481,39 @@ select:focus{
     height: 60px;
     margin: 30px 0px 0px 0px;
 }
-.volver a{
+.volver{
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: transparent;
-    border-radius: 5px;
+    border-radius: 8px;
     border: solid 1px rgba(0, 0, 0, 0.707);
     padding: 4px 10px ;
     gap: 5px;
     width: 130px;
-    color: black;
-    text-decoration: none;
-    font-size: 14px;
-    margin-left:0;
-
+    height: 25px;
+    
 }
+.volver a{
+    text-decoration: none;
+    font-size: 12px;
+    margin-left:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.915);
+}
+
+.volver:hover{
+    background-color: #DDDDDD;
+    cursor: pointer;
+    transition: all ease .4s;
+}
+
+.volver a img{
+    animation: arrow_move 800ms infinite;
+}
+
 .img-plato{
     padding: 5px 8px;
     border-radius: 24px;
@@ -498,8 +525,8 @@ select:focus{
 
 .img-plato img{
     margin-top:0 ;
-    width: 330px;
-    height: 390px;
+    width: 340px;
+    height: 400px;
     border-radius: 20px;
 }
 .back-and-imgreceta  h4{
@@ -511,6 +538,7 @@ select:focus{
     text-align: center;
     transform: translate(-26px,-5px);
 }
+/* aca comienza la box de la descripcion */
 
 .description-receta{
     display: flex;
@@ -521,15 +549,15 @@ select:focus{
 }
 
 .instructions{
-    width: 100%;
-    height: 45%;
+    width: 95%;
+    height: fit-content;
     background-color: transparent;
-    margin-top: 30px;
+    margin-top:10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform: translate(-30px,-50px);
+    transform: translate(-40px,-20px);
 }
 .ingredients article,.instructions article{
     height: 10px;
@@ -543,16 +571,50 @@ select:focus{
 
 
 
-
-.ingredients nav,.instructions nav{
+.ingredients nav,.instructions nav, .descript article:last-child{
     width: 100%;
-    height: 80%;
+    height: fit-content;
     background-color: white;
     border-radius: 20px;
-    margin-top: 30px;
+    margin-top: 35px;
+    padding: 10px;
 
 }
-.ingredients article h4,.instructions article h4{
+.descript article:last-child{
+    margin-top: 0;
+}
+.descript{
+    width: 95%;
+    height: fit-content;
+    background-color: transparent;
+    margin-top: 30px;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    transform: translate(-45px,-30px);
+
+}
+/* .descript article:first-child{
+    margin-bottom: 0;
+    font-size: 13px;
+    background-color: #FF7D1B;
+    color: white;
+    padding: 4px;
+    width: 120px;
+    border-radius: 20px;
+    text-align: center;
+    letter-spacing: 1.5px;
+    height: fit-content;
+
+}
+ */
+
+.ingredients nav{
+    transform: translate(35px,10px);
+    margin-bottom: 40px;
+}
+.ingredients article h4,.instructions article h4,.descript article h4:first-child{
     font-size: 13px;
     background-color: #FF7D1B;
     color: white;
@@ -562,18 +624,26 @@ select:focus{
     text-align: center;
     letter-spacing: 1.5px;
 }
+.descript article h4:first-child{
+    margin:10px 20px
+}
+
 
 .ingredients{
-    transform: translate(-30px,-30px);
-    width: 100%;
-    height: 40%;
+    transform: translate(-30px,-20px);
+    width: 95%;
+    height: fit-content;
     background-color: transparent;
-    margin-top: 30px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+}
+.ingredients article{
+    justify-content: end;
+    margin-bottom: 0;
+    transform: translateX(15px);
 }
 
 .description-receta header{
@@ -581,7 +651,7 @@ select:focus{
     width: 100%;
     height: fit-content;
     transform: translate(-40px,10px);
-
+    
 }
 .description-receta header h2{
     letter-spacing: 1.4px;
@@ -595,7 +665,7 @@ select:focus{
 }
 
 .instructions nav ul{
-    list-style-type: none;
+    list-style-type:disc;
     gap: 10px;
 }
 
@@ -603,14 +673,30 @@ select:focus{
     font-size: 11px;
     gap: 10px;
     font-family: Arial, Helvetica, sans-serif;
+    margin-left: 4px;
 }
 .instructions nav ul li{
-    font-size: 11px;
+    font-size: 12px;
     gap: 10px;
     font-family: Arial, Helvetica, sans-serif;
+    margin-left: 4px;
 }
 .instructions nav ul{
     gap: 10px;
+}
+
+small{
+    color: rgba(128, 128, 128, 0.907);
+    font-size: 10px;
+    gap: 4px;
+    margin-top: 25px;
+    margin-right: 10px;
+}
+.ingredients article small span img{
+    height: 12px;
+    width: 12px;
+    fill:rgba(128, 128, 128, 0.79); 
+
 }
 
 /* hasta aca */
@@ -743,4 +829,19 @@ select:focus{
 
     }
     
+}
+
+@keyframes arrow_move{
+    to{
+        transform: translateX(-20px);
+    }
+}
+
+@keyframes lightLetter{
+    10%{
+        color: #db6821;
+    }
+    30%{
+        color: #db6821;
+    }
 }

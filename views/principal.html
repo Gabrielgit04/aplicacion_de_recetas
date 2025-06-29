@@ -90,40 +90,6 @@
                 <button>Ver receta</button>
             </figure>
 
-            <figure class="item-5">
-                <img src="assets/imgs/img_platos/recetas/pollo-broaster-receta.webp" alt="pollo-broaster-receta">
-                <article>
-                    <h6>Pollo a la broaster</h6>
-                </article>
-                <button>Ver receta</button>
-            </figure>
-
-            <figure class="item-6">
-                <img src="assets/imgs/img_platos/recetas/bolas-de-fraile-o-bombas-fritas-argentinas.webp"
-                    alt="bolas-de-fraile-o-bombas-fritas-argentinas">
-                <article>
-                    <h6>Bombas fritas</h6>
-                </article>
-                <button>Ver receta</button>
-            </figure>
-
-            <figure class="item-7">
-                <img src="assets/imgs/img_platos/recetas/chorrillana-receta-chilena.webp"
-                    alt="chorrillana-receta-chilena">
-                <article>
-                    <h6>Chorillana chilena</h6>
-                </article>
-                <button>Ver receta</button>
-            </figure>
-
-            <figure class="item-8">
-                <img src="assets/imgs/img_platos/recetas/tarta-tres-leches-casera-receta.webp"
-                    alt="tarta-tres-leches-casera-receta">
-                <article>
-                    <h6>Tarta tres leches</h6>
-                </article>
-                <button>Ver receta</button>
-            </figure>
 
             <!-- Agrega más recetas según sea necesario -->
         </section>
@@ -140,6 +106,8 @@
                         <!-- <label for="nombre">Nombre de la receta:</label> -->
                         <input type="text" id="nombre" name="nombre" id="nombre" placeholder="Nombre de la receta" required>
 
+                        <textarea id="ingredientes" name="ingredientes" rows="4" placeholder="Descripcion" required></textarea>
+
                         <!-- <label for="ingredientes">Ingredientes:</label> -->
                         <textarea id="ingredientes" name="ingredientes" rows="4" placeholder="Ingredientes"
                             required></textarea>
@@ -150,6 +118,7 @@
                     </div>
                     <!-- <label for="categoria">Categoría:</label>-->
                     <input type="file" id="imagen" name="imagen" accept="image/*" required>
+                <span>
 
                     <select id="categoria" name="categoria">
                         <option value="" disabled selected>Selecciona una categoría</option>
@@ -159,6 +128,9 @@
                         <option value="postre">🍰 Postres</option>
                     </select>
 
+                    <input type="text" name="porcion" id="porcion" placeholder="Porciones">
+                </span>
+                    
                     <button type="submit" class="save">Guardar</button>
                 </form>
             </dialog>
