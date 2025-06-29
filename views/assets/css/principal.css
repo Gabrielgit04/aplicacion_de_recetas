@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    background-color: #FEF3EF;
+    background-color: #fce4db;
     font-family: "Inter",Arial, Helvetica, sans-serif;
     min-height: 100vh;
 }
@@ -36,7 +36,7 @@ body{
     outline: transparent;
     margin: 5px 50px 5px 0px;
     text-indent: 50px;
-    background-color:#FFE6D9 ;
+    background-color:#efe2db ;
 }
 .search::placeholder{
     text-align: center;
@@ -465,7 +465,6 @@ select:focus{
     grid-template-columns: 1fr 2fr;
     row-gap:2px;
     background-color: #fce4db;
-    border: solid;
 }
 .back-and-imgreceta{
     height: 99vh;
@@ -558,6 +557,7 @@ select:focus{
     justify-content: center;
     align-items: center;
     transform: translate(-40px,-20px);
+    animation: up_info_instr 2s ease-in-out;
 }
 .ingredients article,.instructions article{
     height: 10px;
@@ -593,6 +593,7 @@ select:focus{
     flex-direction: column;
     justify-content: center;
     transform: translate(-45px,-30px);
+    animation: up_info_desc 2s ease-in-out;
 
 }
 /* .descript article:first-child{
@@ -639,6 +640,7 @@ select:focus{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    animation: up_info_ingr 2s ease-in-out;
 }
 .ingredients article{
     justify-content: end;
@@ -658,31 +660,37 @@ select:focus{
     font-size: 32px;
 }
 
-.ingredients nav ul,.instructions nav ul{
+.ingredients nav ul,.instructions nav ol{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap: 15px;
 }
 
-.instructions nav ul{
-    list-style-type:disc;
+.instructions nav ol{
+    list-style-type: decimal;
     gap: 10px;
 }
 
 .ingredients nav ul li{
     font-size: 11px;
-    gap: 10px;
+    gap: 15px;
     font-family: Arial, Helvetica, sans-serif;
-    margin-left: 4px;
+    margin-left:2px;
+    text-align: left;
 }
-.instructions nav ul li{
+.instructions nav ol li{
     font-size: 12px;
     gap: 10px;
     font-family: Arial, Helvetica, sans-serif;
     margin-left: 4px;
 }
-.instructions nav ul{
+.instructions nav ol{
     gap: 10px;
+}
+
+.instructions nav ul li:nth-child(12),.instructions nav ul li:nth-child(10){
+    
+    margin-left: 12px;
 }
 
 small{
@@ -697,6 +705,14 @@ small{
     width: 12px;
     fill:rgba(128, 128, 128, 0.79); 
 
+}
+
+p{
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    padding: 5px;
+    line-height: 1.5;
 }
 
 /* hasta aca */
@@ -812,7 +828,125 @@ small{
     .dialog_add .header-dialog button{
         transform: translate(268px,-7px);
     }
+
+    select{
+        width: 50%;
+    }
+
+    /* description responsive */
+
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container-description{
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+        height: fit-content;
+        
+    }
+
+    .back-and-imgreceta{
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .img-plato{
+        height: fit-content;
+        padding: 3px;
+    }
+    .img-plato img{
+        width: 100%;
+        height: 300px;
+        border-radius: 20px;
+    }
+    .back-and-imgreceta header{
+        width: 100%;
+        height: fit-content;
+        margin: 10px 0;
+    }
+
+    .back-and-imgreceta article h4{
+        transform: translate(-20px,0px);
+        width: 200px;
+        text-align: center;
+    }
+
+    .volver {
+        width: 20%;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(-20px);
+    }
+
+    .volver a{
+        font-size: 10px;
+        color: rgba(0, 0, 0, 0.915);
+        transform: translateX(-10px);}
+
+    .volver a img{
+        opacity: 0;
+        visibility: hidden
+    }
+
+    .instructions nav{
+        transform: translateX(40px);
+        margin-top: 25px;
+    }
+    .instructions nav ol{
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 20px;
+    }
+
+    .instructions article h4{
+        font-size: 12px;
+        margin-left: 20px;
+        text-align: center;
+    }
+
+    .ingredients article h4{
+        font-size: 12px;
+        transform: translateX(20px);
+        text-align: center;
+    }
+
+    small{
+        transform: translateX(27px);
+        font-size: 10px;
+    }
+    .ingredients article small span img{
+        height: 10px;
+        width: 10px;
+    }
+
+
+    .ingredients nav{
+        margin-top: 25px;
+    }
+    .descript article:last-child{
+        margin-left: 40px;
+    }
+    .descript article h4:first-child{
+        margin-left: 30px;
+        font-size: 12px;
+    }
+
+    .description-receta header{
+        transform: translate(0px,-20px);
+        width: 100%;
+        text-align: center;
+        height: fit-content;
+    }
+
+    
+
 }
+/* hasta aca el responsive, a partir de aca son las animaciones */
 
 @keyframes aparicion {
 
@@ -837,11 +971,33 @@ small{
     }
 }
 
-@keyframes lightLetter{
-    10%{
-        color: #db6821;
+@keyframes up_info_desc{
+    from{
+        transform: translateY(20px);
+        opacity: 0;
     }
-    30%{
-        color: #db6821;
+    to{
+        transform: translate(-45px,-30px);
+        opacity: 1;
+    }
+}
+@keyframes up_info_ingr{
+    from{
+        transform: translate(-30px,20px);
+        opacity: 0;
+    }
+    to{
+        transform: translate(-30px,-20px);
+        opacity: 1;
+    }
+}
+@keyframes up_info_instr{
+    from{
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to{
+        transform: translate(-40px,-20px);
+        opacity: 1;
     }
 }

@@ -29,17 +29,17 @@
                 <form action="#" method="post" autocomplete="off">
 
                     <div class="input_form">
-                        <input type="text" name="username" class="entry" placeholder="Usuario | Max 30 caracteres" title="Ingrese su correo, debe contener un @ obligatoriamente."  required>
+                        <input type="text" name="username" class="entry" placeholder="Usuario | Max 30 caracteres" title="Ingrese su correo, debe contener un @ obligatoriamente." minlength="5" maxlength="30" required>
                         <div class="labelline"><span><img src="assets/imgs/icon/icon_user.png" alt="icon"
                                     class="icon_user"></span></div>
                     </div>
 
                         <div class="input_form">
-                            <input type="text" name="adreess" class="entry" placeholder="Correo" title="Ingrese minimo 5 caracteres y maximo 30" minlength="5" maxlength="30" required>
+                            <input type="email" name="adreess" class="entry" placeholder="Correo" title="Ingrese su correo, debe contener un @ obligatoriamente." required>
                             <div class="labelline"><span><img src="assets/imgs/icon/icon_user.png" alt="icon"
                                         class="icon_user"></span></div>
                         </div>
-                        
+
                     <div class="input_form">
                         <input type="password" class="entry_pass" name="password"
                             placeholder="Contraseña | Max 15 caracteres" title="Ingrese minimo 8 caracteres y maximo 15" minlength="8" maxlength="15" required>
