@@ -7,16 +7,18 @@ class UserCrud(DataBase, ABC):
 
     def agg(self, _data):
         try:
-            if self.get_user(_data['user']) is None:
-                query = "INSERT INTO users (username, email, password) VALUES(?, ?, ?)"
-                values = (_data['user'], _data['email'], _data['passw'])
-                self.conn.execute(query, values)
-                self.db.commit()
-                return True
-            raise Exception
+            if not self.get_user("username", _data['user']) is None:
+                return 456
+            if not self.get_user("email", _data['email']) is None:
+                return 457
+            query = "INSERT INTO users (username, email, password) VALUES(?, ?, ?)"
+            values = (_data['user'], _data['email'], _data['passw'])
+            self.conn.execute(query, values)
+            self.db.commit()
+            return 111
         except Exception as e:
             print(f"ERROR: {e}")
-            return False
+            return 000
 
     def delete(self, _data):
         try:
@@ -37,10 +39,10 @@ class UserCrud(DataBase, ABC):
             print(f"ERROR: {e}")
             return False
 
-    def get_user(self, _username):
+    def get_user(self, _parameter, _data):
         try:
-            query = "SELECT * FROM users WHERE username == ?"
-            value = (_username,)
+            query = f"SELECT * FROM users WHERE {_parameter} == ?"
+            value = (_data,)
             result = self.conn.execute(query, value).fetchone()
             if result is None:
                 return None

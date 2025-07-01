@@ -25,6 +25,7 @@ class DataBase(ABC):
             self.conn.execute(query)
             self.conn.execute(query_2)
             self.db.commit()
+            self.db.close()
         except Exception as e:
             print(f"ERROR: {e}")
 

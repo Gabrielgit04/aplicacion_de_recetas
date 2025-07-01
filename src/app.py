@@ -13,8 +13,13 @@ CORS(app)
 def crear_usuario():
     data = request.get_json()
     operator = Admin()
-    if operator.agg(dict(data)):
+    result = operator.agg(dict(data))
+    if result == 111:
         return Response(status=201)
+    elif result == 456:
+        return Response(status=456)
+    elif result == 457:
+        return Response(status=457)
     else:
         return Response(status=401)
 
@@ -38,3 +43,4 @@ def obtener_receta_por_titulo():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
