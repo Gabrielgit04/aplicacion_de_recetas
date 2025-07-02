@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/principal.css">
-    <link rel=" icon" href="assets/imgs/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../static/assets/css/principal.css">
+    <link rel=" icon" href="../static/assets/imgs/logo.jpg" type="image/x-icon">
     <title>Delicias de cocina</title>
 </head>
 
@@ -13,16 +13,16 @@
     <section class="container">
         <!-- header de la vista -->
         <header>
-            <figure><img src="assets/imgs/logo.jpg" alt="logo_delicias"></figure>
+            <figure><img src="../static/assets/imgs/logo.jpg" alt="logo_delicias"></figure>
             <span class="span-search">
                 <form action="" method="post">
-                    <button><img src="assets/imgs/icon/search.png" alt="search"></button>
+                    <button><img src="../static/assets/imgs/icon/search.png" alt="search"></button>
                     <input type="search" name="search" class="search" placeholder="Buscar receta | autor">
                 </form>
             </span>
 
             <div class="span-perfil">
-                <button><img src="assets/imgs/icon/user.png" alt="user_icon"></button>
+                <button><img src="../static/assets/imgs/icon/user.png" alt="user_icon"></button>
             </div>
 
         </header>
@@ -33,7 +33,7 @@
         <section class="menu-filtrado">
             <nav>
                 <ul>
-                    <li><a href="principal.html" class="inicio">🏠Inicio</a></li>
+                    <li><a href="{{  url_for('principal')   }}" class="inicio">🏠Inicio</a></li>
                     <li><button class="escoger">☕Desayunos</button></li>
                     <li><button class="escoger">🥘Almuerzos</button></li>
                     <li><button class="escoger">🍝Cenas</button></li>
@@ -56,40 +56,40 @@
         <!-- recetas box -->
         <section class="recetas-box">
             <figure class="item-1">
-                <img src="assets/imgs/img_platos/recetas/tequenos-de-queso-receta-venezolana.webp"
+                <img src="../static/assets/imgs/img_platos/recetas/tequenos-de-queso-receta-venezolana.webp"
                     alt="tequenos-de-queso-receta-venezolana">
                 <article>
                     <h6>Tequeños</h6>
                 </article>
-                <a href="vistas_recetas_default/tequenos.html"><button>Ver receta</button></a>
+                <a href="{{     url_for('tequeno')   }}"><button>Ver receta</button></a>
 
             </figure>
 
             <figure class="item-2">
-                <img src="assets/imgs/img_platos/recetas/empanadas-de-carne-argentinas-tradicionales.webp"
+                <img src="../static/assets/imgs/img_platos/recetas/empanadas-de-carne-argentinas-tradicionales.webp"
                     alt="empanadas-de-carne-argentinas-tradicionales">
                 <article>
                     <h6>Empanadas de carne argentina</h6>
                 </article>
-                <a href="vistas_recetas_default/empanadas.html"><button>Ver receta</button></a>
+                <a href="{{     url_for('empanada')   }}"><button>Ver receta</button></a>
             </figure>
 
             <figure class="item-3">
-                <img src="assets/imgs/img_platos/recetas/arepa-reina-pepiada-venezolana-receta.webp"
+                <img src="../static/assets/imgs/img_platos/recetas/arepa-reina-pepiada-venezolana-receta.webp"
                     alt="arepa_reina_pepiada">
                 <article>
                     <h6>Arepa reina pepiada</h6>
                 </article>
-                <a href="vistas_recetas_default/arepa.html"><button>Ver receta</button></a>
+                <a href="{{     url_for('arepa')   }}"><button>Ver receta</button></a>
 
             </figure>
 
             <figure class="item-4">
-                <img src="assets/imgs/img_platos/recetas/bandeja-paisa-receta.webp" alt="bandeja-paisa-receta">
+                <img src="../static/assets/imgs/img_platos/recetas/bandeja-paisa-receta.webp" alt="bandeja-paisa-receta">
                 <article>
                     <h6>Bandeja paisa</h6>
                 </article>
-                <a href="vistas_recetas_default/bandeja.html"><button>Ver receta</button></a>
+                <a href="{{     url_for('bandeja')   }}"><button>Ver receta</button></a>
 
             </figure>
             <figure>
@@ -148,8 +148,8 @@
         <input type="submit" value="➕ Agregar receta" onclick="showDialog()" class="agregar">
     </section>
 
-    <script src="public/js/principalViewFunction.js"></script>
-    <script src="public/js/validation.js"></script>
+    <script src="{{    url_for('principal_dialog')    }}"></script>
+    <script src="{{    url_for('validate_inputs')    }}"></script>
     
 </body>
 

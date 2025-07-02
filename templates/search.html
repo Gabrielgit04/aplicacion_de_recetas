@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/principal.css">
-    <link rel=" icon" href="assets/imgs/logo.jpg" type="image/x-icon">
-    <title>Delicias de cocina</title>
+    <link rel="stylesheet" href="../static/assets/css/principal.css">
+    <link rel=" icon" href="../static/assets/imgs/logo.jpg" type="image/x-icon">
+    <title>Busqueda receta</title>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
         <header>
             <span class="span-search">
                 <form action="" method="post">
-                    <button><img src="assets/imgs/icon/search.png" alt="search"></button>
+                    <button><img src="../static/assets/imgs/icon/search.png" alt="search"></button>
                     <input type="search" name="search" class="search" placeholder="Buscar receta | autor">
                 </form>
             </span>
@@ -28,7 +28,7 @@
         <section class="menu-filtrado">
             <nav>
                 <ul>
-                    <li><a href="principal.html" class="inicio">🏠Inicio</a></li>
+                    <li><a href="{{  url_for('principal')   }}" class="inicio">🏠Inicio</a></li>
                     <li><button class="escoger"> aqui va la categoria</button></li>
                 </ul>
             </nav>
