@@ -15,7 +15,7 @@
         <header>
             <figure><img src="../static/assets/imgs/logo.jpg" alt="logo_delicias"></figure>
             <span class="span-search">
-                <form action="" method="post">
+                <form action="{{    url_for('search')    }}" autocomplete="off" method="get">
                     <button><img src="../static/assets/imgs/icon/search.png" alt="search"></button>
                     <input type="search" name="search" class="search" placeholder="Buscar receta | autor">
                 </form>
