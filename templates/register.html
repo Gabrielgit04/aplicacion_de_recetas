@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel=" icon" href="assets/imgs/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+    <link rel=" icon" href="{{ url_for('static', filename='assets/imgs/logo.jpg') }}" type="image/x-icon">
     <title>Registrate</title>
 </head>
 
@@ -13,7 +13,7 @@
     <section class="container">
 
         <div class="semicirculo">
-            <img src="assets/imgs/logo.jpg" alt="logo_delicias_de_cocina">
+            <img src="{{ url_for('static', filename='assets/imgs/logo.jpg') }}" alt="logo_delicias_de_cocina">
             <h1>Delicias de cocina</h1>
 
 
@@ -30,20 +30,20 @@
 
                     <div class="input_form">
                         <input type="text" name="username" class="entry" placeholder="Usuario | Max 30 caracteres" title="Ingrese su correo, debe contener un @ obligatoriamente." minlength="5" maxlength="30" required>
-                        <div class="labelline"><span><img src="assets/imgs/icon/icon_user.png" alt="icon"
+                        <div class="labelline"><span><img src="{{ url_for('static', filename='assets/imgs/icon/icon_user.png') }}" alt="icon"
                                     class="icon_user"></span></div>
                     </div>
 
                         <div class="input_form">
                             <input type="email" name="adreess" class="entry" placeholder="Correo" title="Ingrese su correo, debe contener un @ obligatoriamente." required>
-                            <div class="labelline"><span><img src="assets/imgs/icon/icon_user.png" alt="icon"
+                            <div class="labelline"><span><img src="{{ url_for('static', filename='assets/imgs/icon/icon_user.png') }}" alt="icon"
                                         class="icon_user"></span></div>
                         </div>
 
                     <div class="input_form">
                         <input type="password" class="entry_pass" name="password"
                             placeholder="Contraseña | Max 15 caracteres" title="Ingrese minimo 8 caracteres y maximo 15" minlength="8" maxlength="15" required>
-                        <div class="labelline_pass"><span><img src="assets/imgs/icon/icons8-lock-48.png" alt="icon"
+                        <div class="labelline_pass"><span><img src="{{ url_for('static', filename='assets/imgs/icon/icons8-lock-48.png') }}" alt="icon"
                                     class="icon_user"></span>
                         </div>
                     </div>
@@ -51,13 +51,13 @@
                     <div class="input_form">
                         <input type="password" class="entry_pass" name="password"
                             placeholder="Repite tu contraseña | Max 15 caracteres" title="Ingrese minimo 8 caracteres y maximo 15"  minlength="8" maxlength="15"  required>
-                        <div class="labelline_pass"><span><img src="assets/imgs/icon/icons8-lock-48.png" alt="icon"
+                        <div class="labelline_pass"><span><img src="{{ url_for('static', filename='assets/imgs/icon/icons8-lock-48.png') }}" alt="icon"
                                     class="icon_user"></span>
                         </div>
                     </div>
                     <button>Registrarse</button>
                 </form>
-                <a href="login.html" class="link_login">¿Tienes cuenta? Inicia aquí</a>
+                <a href="{{ url_for('inicio_sesion') }}" class="link_login">¿Tienes cuenta? Inicia aquí</a>
 
 
             </div>

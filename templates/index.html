@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/index.css">
-    <link rel="shortcut icon" href="assets/imgs/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/index.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/imgs/logo.jpg') }}" type="image/x-icon">
     <title>Bienvenido a Delicias de Cocina</title>
 </head>
 
@@ -13,14 +13,14 @@
     <!-- header -->
     <header>
         <figure class="img_logo">
-            <img src="assets/imgs/logo.jpg" alt="logo">
+            <img src="{{ url_for('static', filename='assets/imgs/logo.jpg') }}" alt="logo">
             <h2>Delicias de Cocina</h2>
         </figure>
         <nav class="box_contactandsingup">
-            <a href="index.html" id="home">Inicio</a>
-            <a href="#" id="contact">Contacto</a>
-            <div class="sign-in"><a href="login.html" target="_blank">Inicia sesión</a>
-                <a href="register.html">Registrate</a>
+            <a href="{{ url_for('index') }}" id="home">Inicio</a>
+            <a href="{{ url_for('contacto') }}" id="contact">Contacto</a>
+            <div class="sign-in"><a href="{{ url_for('inicio_sesion') }}" target="_blank">Inicia sesión</a>
+                <a href="{{ url_for('registrarse') }}">Registrate</a>
             </div>
         </nav>
     </header>
@@ -38,17 +38,17 @@
         <button><a href="#">Ir a ➜</a></button>
         <div class="menu">
             <figure class="item-1">
-                <img src="assets/imgs/img_platos/desayuno.jpg" alt="desayunos">
+                <img src="{{ url_for('static', filename='assets/imgs/img_platos/desayuno.jpg') }}" alt="desayunos">
                 <h4>Desayunos</h4>
             </figure>
 
             <figure class="item-2">
-                <img src="assets/imgs/img_platos/almuerzo.jpg" alt="almuerzos">
+                <img src="{{ url_for('static', filename='assets/imgs/img_platos/almuerzo.jpg') }}" alt="almuerzos">
                 <h4>Almuerzos</h4>
             </figure>
 
             <figure class="item-3">
-                <img src="assets/imgs/img_platos/cena.jpg" alt="cenas" id="cenas">
+                <img src="{{ url_for('static', filename='assets/imgs/img_platos/cena.jpg') }}" alt="cenas" id="cenas">
                 <h4>Cenas</h4>
 
             </figure>

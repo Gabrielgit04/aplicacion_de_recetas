@@ -33,7 +33,7 @@
         <section class="menu-filtrado">
             <nav>
                 <ul>
-                    <li><button class="escoger">🏠Inicio</button></li>
+                    <li><a href="principal.html" class="inicio">🏠Inicio</a></li>
                     <li><button class="escoger">☕Desayunos</button></li>
                     <li><button class="escoger">🥘Almuerzos</button></li>
                     <li><button class="escoger">🍝Cenas</button></li>
@@ -61,7 +61,7 @@
                 <article>
                     <h6>Tequeños</h6>
                 </article>
-                <a href="tequenos.html"><button>Ver receta</button></a>
+                <a href="vistas_recetas_default/tequenos.html"><button>Ver receta</button></a>
 
             </figure>
 
@@ -111,24 +111,22 @@
                     <button class="cerrar" onclick="hideDialog()">❌</button>
                     <h4>Agrega tu receta</h4>
                 </span>
-                <form   class="dialog">
+                <form autocomplete="off"  id="dialog">
 
                     <div class="inputs">
                         <!-- <label for="nombre">Nombre de la receta:</label> -->
-                        <input type="text" id="nombre" name="nombre" id="nombre" placeholder="Nombre de la receta" required>
+                        <input type="text" id="nombre" name="nombre" id="nombre" placeholder="Nombre de la receta">
 
-                        <textarea id="ingredientes" name="ingredientes" rows="4" placeholder="Descripcion" required></textarea>
+                        <textarea id="descripcion" name="descripcion" rows="4" placeholder="Descripcion"></textarea>
 
                         <!-- <label for="ingredientes">Ingredientes:</label> -->
-                        <textarea id="ingredientes" name="ingredientes" rows="4" placeholder="Ingredientes"
-                            required></textarea>
+                        <textarea id="ingredientes" name="ingredientes" rows="4" placeholder="Ingredientes"></textarea>
 
                         <!-- <label for="instrucciones">Instrucciones:</label> -->
-                        <textarea id="instrucciones" name="instrucciones" rows="4" placeholder="Instrucciones"
-                            required></textarea>
+                        <textarea id="instrucciones" name="instrucciones" rows="4" placeholder="Instrucciones"></textarea>
                     </div>
                     <!-- <label for="categoria">Categoría:</label>-->
-                    <input type="file" id="imagen" name="imagen" accept="image/*" required>
+                    <input type="file" id="imagen" name="imagen" accept="image/*" >
                 <span>
 
                     <select id="categoria" name="categoria">
@@ -141,6 +139,7 @@
 
                     <input type="text" name="porcion" id="porcion" placeholder="Porciones">
                 </span>
+                    <p id="message"></p>
                     
                     <button type="submit" class="save">Guardar</button>
                 </form>
@@ -150,7 +149,8 @@
     </section>
 
     <script src="public/js/principalViewFunction.js"></script>
-
+    <script src="public/js/validation.js"></script>
+    
 </body>
 
 </html>

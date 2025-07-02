@@ -36,7 +36,7 @@ body{
     outline: transparent;
     margin: 5px 50px 5px 0px;
     text-indent: 50px;
-    background-color:#efe2db ;
+    background-color:#d4c7c0 ;
 }
 .search::placeholder{
     text-align: center;
@@ -308,8 +308,8 @@ hr{
 .dialog_add{
     flex-direction: column;
     width: 35%;
-    height: 90%;
-    padding: 8px;
+    height: 95%;
+    padding: 20px;
     z-index: 10;
     border-radius: 20px 0 20px 0;
     border: solid  white;
@@ -404,7 +404,7 @@ select{
     font-weight: bold;
     border: solid 1px #DDDDDD;
     color: #FF7D1B;
-    margin:0  10px 10px 10px;
+    margin:0  10px 0px 10px;
 }
 
 .dialog_add select option{
@@ -419,7 +419,7 @@ select:focus{
 
 .dialog_add .save{
     width: 95%;
-    height: 40px;
+    height: 35px;
     border-radius: 7px;
     border: solid 1px #FF7D1B;
     background-color: #FF7D1B;
@@ -427,7 +427,7 @@ select:focus{
     font-weight: bold;
     letter-spacing: 1.2px;
     cursor: pointer;
-    margin: 10px 10px 5px 10px;
+    margin: 3px 10px 5px 10px;
 }
 
 
@@ -714,6 +714,40 @@ p{
     padding: 5px;
     line-height: 1.5;
 }
+/* search view */
+
+.inicio{
+    background-color: transparent;
+    cursor: pointer;
+    height: fit-content;
+    border: solid 2px transparent;
+    transition: transform ease .3s;
+    font-size: 14px;
+    color:rgba(0, 0, 0, 0.755);
+    padding: 1px;
+    font-weight: bold;
+    padding: 3px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    }
+    .resultado-busqueda{
+        margin:10px 60px ;
+        gap: 10px;
+    }
+    .resultado-busqueda h3{
+        color: rgba(0, 0, 0, 0.723);
+    }
+    .resultado-busqueda h6{
+        color: rgba(90, 89, 89, 0.57);
+        text-decoration: underline;
+    }
+    .resultado-busqueda p{
+        color: #FF7D1B;
+    }
+
+
+    /* hasta aca search view */
+
 
 /* hasta aca */
 
@@ -761,7 +795,7 @@ p{
     .span-search button img{
         width: 20px;
         height: 20px;
-        transform: translate(-40px, 26px);
+        transform: translate(-43px, 32px);
     }
 
     .span-perfil button{
@@ -778,24 +812,25 @@ p{
         grid-template-columns: repeat(2,minmax(100px, 1fr));
         padding: 10px;
         gap:5px 50px;
+        justify-content: center;
     }
     .recetas-box figure{
         width: 120%;
         height: 150px;
     }
     .header-two{
-        width: 120%;
+        width: 110%;
         height: 80px;
-        padding: 2px;
+        padding: 4px;
         margin: 10px 0;
-        transform: translateX(39px);
+        transform: translateX(50px);
     }
     .header-two p{
         font-size: 11px;
         text-align: center;
         letter-spacing: 0px;
         transform: translateY(-10px);
-        padding:0 10px;
+        padding:0 20px;
     }
     .menu-filtrado nav ul{
         align-items: center;
@@ -803,6 +838,7 @@ p{
         margin-left: 70px;
 
     }
+
 
     .escoger{
         font-size: 9px;
@@ -835,11 +871,6 @@ p{
 
     /* description responsive */
 
-    body{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
     .container-description{
         grid-template-columns: 1fr;
         row-gap: 10px;
@@ -942,6 +973,8 @@ p{
         text-align: center;
         height: fit-content;
     }
+
+    /* search view */
 
     
 
