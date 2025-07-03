@@ -53,7 +53,10 @@
                             <article>
                                 <h6>{{receta["titulo"]}}</h6>
                             </article>
-                            <a href="{{  url_for('recipe')   }}"><button>Ver receta</button></a>
+                            <form action="http://127.0.0.1:5000/api/mostrar_receta" method="post">
+                                <input type="hidden" name="datos" value="{{receta}}">
+                                <button>Ver receta</button>
+                            </form>
                         </figure>
                     </section>
             {% endfor %}

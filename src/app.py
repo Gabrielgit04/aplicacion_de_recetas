@@ -1,3 +1,5 @@
+import ast
+
 from flask import Flask, request, jsonify, Response, render_template
 from flask_cors import CORS
 from user import Admin, User
@@ -9,6 +11,7 @@ CORS(app)
 *  TEMPLATES RENDER:
 ***************************
 """
+
 @app.route("/", methods = ['GET'])
 def index():
     return render_template("index.html")
@@ -45,7 +48,7 @@ def bandeja():
 def empanada():
     return render_template("empanadas.html")
 
-@app.route("/resultado_busqueda", methods = ['GET'])
+@app.route("/receta_detallado", methods = ['GET'])
 def recipe():
     return render_template("plantilla_receta.html")
 """
@@ -53,6 +56,7 @@ def recipe():
 *  APIS PARA LOS USUARIOS:
 ***************************
 """
+
 @app.route("/api/crear_usuario_nuevo", methods = ['POST'])
 def crear_usuario():
     data = {
@@ -81,12 +85,12 @@ def verificar_usuario():
         return render_template("principal.html")
     else:
         return render_template('login.html', error="Credenciales incorrectas")
-
 """
 ***************************
 *  APIS PARA LAS RECETAS:
 ***************************
 """
+
 @app.route("/api/obtener_receta", methods = ['POST'])
 def obtener_receta_por_titulo():
     titulo = request.form["search"]
@@ -98,9 +102,13 @@ def obtener_receta_por_titulo():
     claves = ("id", "titulo", "descripcion", "ingredientes", "pasos", "categoria", "id_usuario")
     result_json = [dict(zip(claves, elementos)) for elementos in result]
     operator.db.close()
-    print(result_json)
     return render_template("search.html", numero_recetas = len(result_json),
                            dicc_recetas = result_json)
+
+@app.route("/api/mostrar_receta", methods = ['POST'])
+def mostrar():
+    data = request.form["datos"]
+    return render_template("plantilla_receta.html", data= ast.literal_eval(data))
 
 if __name__ == '__main__':
     try:

@@ -15,24 +15,24 @@
                     <a href="principal.html"><img src="../static/assets/imgs/icon/arrow-narrow-left-dashed.svg" alt="back_icon"> Volver</a>
                 </figure>
                 <article>
-                    <h4>aqui va la categoria</h4>
+                    <h4>{{data["categoria"]}}</h4>
                 </article>
             </header>
             <figure class="img-plato">
-                <img src="{{  url_for('')  }}" alt=""> <!--imagen de la receta-->
+                 <!--imagen de la receta-->
             </figure>
 
         </section>
 
         <section class="description-receta">
 
-            <header><h2>nombre receta</h2></header>
+            <header><h2>{{data["titulo"]}}</h2></header>
             <div class="descript">
                 <article>
                     <h4>Descripcion</h4>
                 </article>
                 <article>
-                        <p>aqui va la descripcion</p>
+                        <p>{{data["descripcion"]}}</p>
                 </article>
             </div>
             
@@ -43,7 +43,7 @@
                 </article>
                 <nav>
                     <ul>
-                        aqui va la lista de ingredientes
+                        {{data["ingredientes"]}}
                     </ul>
 
                 </nav>
@@ -55,7 +55,7 @@
                 </article>
                 <nav>
                     <ul >
-                        aqui va la lista de instrucciones
+                        {{data["pasos"]}}
                     </ul>
                 </nav>
 
