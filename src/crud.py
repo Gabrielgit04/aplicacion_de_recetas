@@ -103,7 +103,7 @@ class RecipesCrud(DataBase, ABC):
 
     def get_recipe(self, _title):
         try:
-            query = "SELECT * FROM recipes WHERE title == ?"
+            query = f"SELECT * FROM recipes WHERE title LIKE %?%"
             value = (_title,)
             result = self.conn.execute(query, value).fetchone()
             if result is None:

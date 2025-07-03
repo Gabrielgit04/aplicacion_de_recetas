@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/assets/css/principal.css">
+    <link rel=" icon" href="../static/assets/imgs/logo.jpg" type="image/x-icon">
+    <title>Delicias de cocina</title>
+</head>
+
+<body>
+    <section class="container">
+        <!-- header de la vista -->
+        <header>
+            <figure><img src="../static/assets/imgs/logo.jpg" alt="logo_delicias"></figure>
+            <span class="span-search">
+                <form action="{{    url_for('search')    }}" autocomplete="off" method="get">
+                    <button><img src="../static/assets/imgs/icon/search.png" alt="search"></button>
+                    <input type="search" name="search" class="search" placeholder="Buscar receta | autor">
+                </form>
+            </span>
+
+            <div class="span-perfil">
+                <button><img src="../static/assets/imgs/icon/user.png" alt="user_icon"></button>
+            </div>
+
+        </header>
+        <!-- hasta aca -->
+        <hr>
+        <span class="lineOne"></span>
+        <!-- menu para filtrar -->
+        <section class="menu-filtrado">
+            <nav>
+                <ul>
+                    <li><a href="{{  url_for('principal')   }}" class="inicio">🏠Inicio</a></li>
+                    <li><button class="escoger">☕Desayunos</button></li>
+                    <li><button class="escoger">🥘Almuerzos</button></li>
+                    <li><button class="escoger">🍝Cenas</button></li>
+                    <li><button class="escoger">🍰Postres</button></li>
+                    <li><button class="escoger">🥔Ingredientes</button></li>
+                </ul>
+            </nav>
+        </section>
+        <!-- hasta aca -->
+        <span class="lineTwo"></span>
+        <!-- segundo header -->
+        <hr class="line-downh">
+        <div class="header-two">
+            <h4>¡Bienvenido a Delicias de Cocina!</h4>
+            <p>Descubre recetas increibles, conecta con otros amantes de la cocina y lleva tu habilidades culinaria al
+                siguiente nivel.</p>
+        </div>
+        <!-- hasta aca -->
+
+        <!-- recetas box -->
+        <section class="recetas-box">
+            <figure class="item-1">
+                <img src="../static/assets/imgs/img_platos/recetas/tequenos-de-queso-receta-venezolana.webp"
+                    alt="tequenos-de-queso-receta-venezolana">
+                <article>
+                    <h6>Tequeños</h6>
+                </article>
+                <a href="{{     url_for('tequeno')   }}"><button>Ver receta</button></a>
+
+            </figure>
+
+            <figure class="item-2">
+                <img src="../static/assets/imgs/img_platos/recetas/empanadas-de-carne-argentinas-tradicionales.webp"
+                    alt="empanadas-de-carne-argentinas-tradicionales">
+                <article>
+                    <h6>Empanadas de carne argentina</h6>
+                </article>
+                <a href="{{     url_for('empanada')   }}"><button>Ver receta</button></a>
+            </figure>
+
+            <figure class="item-3">
+                <img src="../static/assets/imgs/img_platos/recetas/arepa-reina-pepiada-venezolana-receta.webp"
+                    alt="arepa_reina_pepiada">
+                <article>
+                    <h6>Arepa reina pepiada</h6>
+                </article>
+                <a href="{{     url_for('arepa')   }}"><button>Ver receta</button></a>
+
+            </figure>
+
+            <figure class="item-4">
+                <img src="../static/assets/imgs/img_platos/recetas/bandeja-paisa-receta.webp" alt="bandeja-paisa-receta">
+                <article>
+                    <h6>Bandeja paisa</h6>
+                </article>
+                <a href="{{     url_for('bandeja')   }}"><button>Ver receta</button></a>
+
+            </figure>
+            <figure>
+                <img src="" alt=""> <!-- Agrega la imagen de la receta aquí -->
+                <article>
+                    <h6>Nombre receta</h6>
+                </article>
+                <a href=""><button>Ver receta</button></a>
+
+            </figure>
+
+
+            <!-- Agrega más recetas según sea necesario -->
+        </section>
+
+        <section class="formulario">
+            <dialog class="dialog_add">
+                <span class="header-dialog">
+                    <button class="cerrar" onclick="hideDialog()">❌</button>
+                    <h4>Agrega tu receta</h4>
+                </span>
+                <form autocomplete="off"  id="dialog">
+
+                    <div class="inputs">
+                        <!-- <label for="nombre">Nombre de la receta:</label> -->
+                        <input type="text" id="nombre" name="nombre" id="nombre" placeholder="Nombre de la receta">
+
+                        <textarea id="descripcion" name="descripcion" rows="4" placeholder="Descripcion"></textarea>
+
+                        <!-- <label for="ingredientes">Ingredientes:</label> -->
+                        <textarea id="ingredientes" name="ingredientes" rows="4" placeholder="Ingredientes"></textarea>
+
+                        <!-- <label for="instrucciones">Instrucciones:</label> -->
+                        <textarea id="instrucciones" name="instrucciones" rows="4" placeholder="Instrucciones"></textarea>
+                    </div>
+                    <!-- <label for="categoria">Categoría:</label>-->
+                    <input type="file" id="imagen" name="imagen" accept="image/*" >
+                <span>
+
+                    <select id="categoria" name="categoria">
+                        <option value="" disabled selected>Selecciona una categoría</option>
+                        <option value="desayuno">☕ Desayuno</option>
+                        <option value="almuerzo">🥘 Almuerzos</option>
+                        <option value="cena">🍝 Cenas</option>
+                        <option value="postre">🍰 Postres</option>
+                    </select>
+
+                    <input type="text" name="porcion" id="porcion" placeholder="Porciones">
+                </span>
+                    <p id="message"></p>
+                    
+                    <button type="submit" class="save">Guardar</button>
+                </form>
+            </dialog>
+        </section>
+        <input type="submit" value="➕ Agregar receta" onclick="showDialog()" class="agregar">
+    </section>
+    
+</body>
+
+</html>

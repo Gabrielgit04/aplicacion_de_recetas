@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+    <link rel=" icon" href="assets/imgs/logo.jpg" type="image/x-icon">
+    <title>Inicio de sesion</title>
+</head>
+
+<body>
+    <section class="container">
+
+        <div class="semicirculo">
+            <img src="{{ url_for('static', filename='assets/imgs/logo.jpg') }}" alt="logo_delicias_de_cocina">
+            <h1>Delicias de cocina</h1>
+
+
+        </div>
+        <div class="login">
+
+
+            <div class="login_box">
+                <header>
+                    <h2>Inicio de sesión</h2>
+                </header>
+
+                <form id="formLogin"  autocomplete="off" action="http://127.0.0.1:5000/api/verificar_usuario" method="POST">
+                    <!--ERRORES: -->
+                    {% if error %}
+                    <div style="background-color: #ffe5e5; color: #d8000c; border: 1px solid #d8000c; padding: 5px; margin-top: -35px; margin-bottom: -35px;; border-radius: 5px; text-align: center;">
+                        {{ error }}
+                    </div>
+                    {% endif %}
+                    <div class="input_area">
+                        <input type="text" name="username" id="user" class="entry" placeholder="Usuario | Max 30 caracteres">
+                        <div class="labelline"><span><img src="{{ url_for('static', filename='assets/imgs/icon/icon_user.png') }}" alt="icon"
+                                    class="icon_user"></span></div>
+                    </div>
+                    <p id="validatp"></p>
+
+                    <div class="input_password">
+                        <input type="password" id="password" class="entry_pass" name="password"
+                            placeholder="Contraseña | Max 15 caracteres" >
+                        <div class="labelline_pass"><span><img src="{{ url_for('static', filename='assets/imgs/icon/icons8-lock-48.png') }}" alt="icon"
+                                    class="icon_user"></span>
+                        </div>
+                    </div>
+                    <article>
+                        <a href="#">¿Olvido su contraseña?</a>
+                    </article>
+
+                    <button>Ingresar</button>
+                </form>
+                <a href="{{ url_for('registrarse') }}" class="link_registro">Crea una cuenta</a>
+
+
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

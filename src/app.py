@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, jsonify, Response, render_template
 from flask_cors import CORS
 from user import Admin, User
 
@@ -6,22 +6,81 @@ app = Flask("app")
 CORS(app)
 """
 ***************************
+*  TEMPLATES RENDER:
+***************************
+"""
+@app.route("/", methods = ['GET'])
+def index():
+    return render_template("index.html")
+
+@app.route("/login", methods = ['GET'])
+def inicio_sesion():
+    return render_template("login.html")
+
+@app.route("/register", methods = ['GET'])
+def registrarse():
+    return render_template("register.html")
+
+@app.route("/contacto", methods = ['GET'])
+def contacto():
+    return render_template("contact.html")
+
+@app.route("/resultado_busqueda", methods = ['GET'])
+def search():
+    return render_template("search.html")
+
+@app.route("/resultado_busqueda", methods = ['GET'])
+def principal():
+    return render_template("principal.html")
+
+@app.route("/resultado_busqueda", methods = ['GET'])
+def tequeno():
+    return render_template("tequenos.html")
+
+@app.route("/resultado_busqueda", methods = ['GET'])
+def arepa():
+    return render_template("arepa.html")
+
+@app.route("/resultado_busqueda", methods = ['GET'])
+def bandeja():
+    return render_template("bandeja.html")
+
+@app.route("/resultado_busqueda", methods = ['GET'])
+def empanada():
+    return render_template("empanadas.html")
+"""
+***************************
 *  APIS PARA LOS USUARIOS:
 ***************************
 """
 @app.route("/api/crear_usuario_nuevo", methods = ['POST'])
 def crear_usuario():
-    data = request.get_json()
+    data = {
+        "user" : request.form["username"],
+        "email": request.form["adreess"],
+        "passw": request.form["password"],
+    }
     operator = Admin()
     result = operator.agg(dict(data))
     if result == 111:
-        return Response(status=201)
+        return render_template("login.html")
     elif result == 456:
-        return Response(status=456)
+        return render_template("register.html", error="Nombre de Usuario ya existente")
     elif result == 457:
-        return Response(status=457)
+        return render_template("register.html", error="Correo ya registrado en la plataforma")
     else:
+        print("error")
         return Response(status=401)
+
+@app.route('/api/verificar_usuario', methods = ['POST'])
+def verificar_usuario():
+    operator = Admin()
+    user = request.form["username"]
+    passw = request.form["password"]
+    if operator.verific_user(user, passw):
+        return render_template("principal.html")
+    else:
+        return render_template('login.html', error="Credenciales incorrectas")
 
 """
 ***************************
@@ -42,5 +101,8 @@ def obtener_receta_por_titulo():
     return jsonify(result_json)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    try:
+        app.run(debug=True)
+    except Exception as e:
+        print(e)
 

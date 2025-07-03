@@ -1,0 +1,439 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #FF7D1B;
+    box-sizing: border-box;
+    font-family:"Inter",Arial, Helvetica, sans-serif;
+}
+
+/* login estilos  y algunos estilos reciclados del registro*/
+.container{
+    display: grid;
+    grid-template-columns: repeat(2,minmax(450px,3fr));
+    height: 100dvh;
+    width: 100dvw;
+    letter-spacing: 1px;
+    animation:aparicion 1.5s linear;
+}
+
+.semicirculo{
+    width: 650px;
+    background-image: linear-gradient(45deg,#BF3111 35%,#bf6211 55%,#d17a10 70%,#efb813 100%);
+    border-radius: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: translateX(-40%);
+    
+}
+
+.login_box{
+    width: 450px;
+    height: 380px;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    border: solid whitesmoke;
+    text-align: center;
+    justify-content: center;
+}
+
+.login_box h2{
+    color:#FF7D1B;
+    margin-top: 10px;
+    font-size: 35px;
+}
+
+.semicirculo img{
+    width: 150px;
+    height: 140px;
+    border-radius: 45%;
+    margin:0 0 0 250px;
+}
+.semicirculo h1{
+    color: white;
+    margin:10px 0 0 260px;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.login{
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 100px 0 0;
+    transition: all ease .2s;
+}
+
+.input_area,.input_password{
+    position: relative;
+    height:50px;
+    line-height: 45px;
+    margin: 30px 0 0px 0;
+    padding: 8px;
+}
+.input_password{
+    margin:20px 0 0 0;
+}
+.entry,.entry_pass{
+    position: absolute;
+    width: 85%;
+    line-height: 45px;
+    outline: none;
+    border-radius: 35px;
+    border: solid #DDDDDD;
+    right: 27px;
+    background-color: #DDDDDD;
+    text-indent: 52px;
+    transition: al ease .2s;
+    /* box-shadow: 0 0 6px darkslategray; */
+}
+.entry:focus::placeholder,.entry_pass:focus::placeholder{
+    opacity: 0;
+}
+.entry::placeholder,.entry_pass::placeholder{
+    font-weight: bold;
+}
+
+.labelline,.labelline_pass{
+    position: absolute;
+    z-index: 1111;
+    font-size: 13;
+    font-weight: bold;
+    padding: 0.5;
+    margin: 0 48px;
+}
+.icon_user,.icon_lock{
+    width: 25px;
+    height: 25px;
+    margin: 10px 0;    
+}
+article{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    
+    
+}
+article a{
+    width: fit-content;
+    height: fit-content;
+    margin-right: 55px;
+    font-size: 10px;
+    color: rgba(47, 79, 79, 0.697);
+    text-decoration: none;
+    transition: .3s;
+}
+article a:active{
+    color: #FF7D1B;
+    transition: all ease .4s;
+}
+.link_registro{
+    letter-spacing: 1.5px;
+    color: #d17a10;
+    text-decoration: none;
+}
+.link_registro:active{
+    color: #FF7D1B;
+    transition: .4s;
+
+}
+
+button{
+    margin: 20px 0 6px 0 ;
+    padding: 8px;
+    width: 60%;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    background-color: #FF7D1B;
+    cursor: pointer;
+    color: whitesmoke;
+    transition: al ease .2s;
+    border: solid #FF7D1B;
+}
+button:hover{
+    color:#FF7D1B;
+    background-color: #222222;
+    outline: #222222;
+    transition: all ease .4s;
+    text-shadow: 0 0 5px #FF7D1B;
+    border: solid #222222;
+}
+button:active{
+    scale: 0.8;
+    transition: .4s;
+
+}
+/* hasta aca los estilos del login */
+
+/* estilos del registro desde aca */
+.input_form{
+    position: relative;
+    height:30px;
+    line-height: 40px;
+    margin: 30px 0 10px 0;
+    padding: 4px;
+
+}
+.register_box{
+    width: 450px;
+    height: 450px;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    border: solid whitesmoke;
+    text-align: center;
+    justify-content: center;
+
+}
+.register_box h2{
+    color:#FF7D1B;
+    margin-top: 5px;
+    transform: translateY(5px);
+    font-size: 30px;
+}
+.link_login{
+    letter-spacing: 1.5px;
+    color: #d17a10;
+    text-decoration: none;
+    font-size: 12px;
+}
+.link_login:active{
+    color: #FF7D1B;
+    transition: .4s;
+
+}
+
+.link_login:hover,.link_registro:hover{
+    text-decoration: underline;
+}
+/* hasta aca los estilos de registro */
+
+/* contacto view */
+
+.contact-container{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+}
+
+.contact-box{
+    height: 99%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contact-box form{
+    display: flex;
+    border-radius: 10px;
+    width: 70%;
+    height: 60%;
+    padding: 10px;
+    flex-direction: column;
+    background-color: white;
+    gap: 1px;
+}
+
+.contact-box form div{
+    display: flex;
+    flex-direction: column;
+    gap: 12px; 
+    padding:4px;
+    align-items: center;
+
+}
+
+.contact-box form div input, textarea{
+    line-height: 30px;
+    border-radius: 8px;
+    width: 85%;
+    border: solid #DDDDDD;
+    background-color: #DDDDDD;
+    text-indent: 7px;
+}
+
+textarea{
+    resize: none;
+}
+
+.contact-box form div input:focus::placeholder, textarea:focus::placeholder{
+    opacity: 0;
+}
+
+.contact-box form div input:focus, textarea:focus{
+    outline: none;
+}
+
+.contact-box form h3{
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 24px;
+    color: #FF7D1B;
+}
+
+.contact-box button{
+    margin-top: 10px;
+    margin-left:90px;
+}
+
+.contact-box p{
+    font-size: 12px;
+    text-indent: 20px;
+}
+
+.presentation-box-contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    background-image: linear-gradient(45deg,#BF3111 35%,#bf6211 55%,#d17a10 70%,#efb813 100%);
+}
+.presentation-box-contact figure{
+    width: fit-content;
+    height: fit-content;
+}
+
+#img-logo-contact{
+    width: 160px;
+    height: 160px;
+    border-radius: 45%;
+    margin-bottom: 0;
+    animation: girar-img 2.5s  1s infinite;
+}
+
+.presentation-box-contact h2{
+    color: white;
+    letter-spacing: 2px;
+    transform: translateY(-30px);
+}
+
+
+/* hasta aca los estilos de contacto view */
+
+
+/* responsive design */
+
+@media(width < 450px){
+    .semicirculo{
+        width: 560px;
+        background-image: linear-gradient(0deg, transparent);
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+    .semicirculo img{
+        width: 60px;
+        height: 50px;
+        margin:0 0 0 240px;
+        border-radius: 50%;
+    }
+    .semicirculo h1{
+        margin:20px 30px 20px 0;
+        font-size: 20px;
+    }
+
+    .login_box,.register_box{
+        width: 350px;
+        margin-right:0px;
+    }
+    .login_box h2,.register_box h2{
+        font-size: 30px;
+    }
+    .entry,.entry_pass{
+        right: 35px;
+        text-indent: 50px;
+        width: 75%;
+        margin: 20px 0 10 0;
+    }
+    .icon_user,.icon_lock{
+        margin-left:7px;
+        transform: translateY(2px);
+    }
+    article a{
+        font-size: 9px;
+        letter-spacing: 1px;
+    }
+    .link_registro,.link_login{
+        font-size: 12px;
+    }
+    button{
+        width: 55%;
+        margin: 25px 0 6px 0;
+    }
+
+    .container{
+        grid-template-columns: 1fr;
+        
+    }
+    .entry::placeholder,.entry_pass::placeholder{
+        font-weight: bold;
+        font-size: 10px;
+    }
+
+    .contact-container{
+        grid-template-columns: 1fr;
+    }
+    .presentation-box-contact{
+        height: 45%;
+        flex-direction: row;
+        padding: 5px;
+        justify-content: left;
+    }
+    #img-logo-contact{
+        width: 30px;
+        height: 30px;
+    }
+
+    .presentation-box-contact h2{
+        font-size: 15px;
+        transform: translateY(0px);
+    }
+    .contact-box{
+        height: 150%;
+    }
+
+    .contact-box form{
+        height: fit-content;
+        padding: 10px;
+        
+    }
+
+    .contact-box input::placeholder,textarea::placeholder{
+        font-size: 8px;
+        font-weight: bold;        
+    }
+
+    .contact-box button{
+        margin-left:37px;
+        width: 70%;
+    }
+
+}
+
+
+
+/* animacion e importar fuente */
+@font-face {
+    font-family: "Inter";
+    src: url(/static/assets/fonts/Poppins-Black.ttf), format("truetype");
+}
+
+@keyframes aparicion{
+    from{
+            transform: translateY(-100%);
+            opacity: 0;
+    }
+    to{
+            transform: translateY(0%);
+            opacity: 1;
+    
+    }
+}
+
+@keyframes girar-img{
+    to{
+        transform: rotateY(360deg);
+    }
+}
