@@ -313,6 +313,7 @@ textarea{
 
 /* hasta aca los estilos de contacto view */
 
+
 /* responsive design */
 
 @media(width < 450px){
@@ -417,7 +418,7 @@ textarea{
 /* animacion e importar fuente */
 @font-face {
     font-family: "Inter";
-    src: url(http://127.0.0.1:5500/views/assets/fonts/Poppins-Black.ttf), format("truetype");
+    src: url(/static/assets/fonts/Poppins-Black.ttf), format("truetype");
 }
 
 @keyframes aparicion{

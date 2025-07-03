@@ -39,6 +39,11 @@ def recipe():
 def search():
     return render_template('search.html')
 
+# perfil
+@app.route('/profile')
+def perfil():
+    return render_template('perfil_usuario.html')
+
 
 
 
