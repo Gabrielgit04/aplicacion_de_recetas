@@ -14,7 +14,7 @@
         <!-- header de la vista -->
         <header>
             <span class="span-search">
-                <form action="" method="post">
+                <form action="http://127.0.0.1:5000/api/obtener_receta" method="post">
                     <button><img src="../static/assets/imgs/icon/search.png" alt="search"></button>
                     <input type="search" name="search" class="search" placeholder="Buscar receta | autor">
                 </form>
@@ -39,23 +39,35 @@
         <hr class="line-downh">
         <article class="resultado-busqueda">
             <h3>Catalogo</h3>
-            <h6>aqui va el numero de recetas encontradas</h6>
+            <h6>Recetas que coinciden con tu busqueda: {{numero_recetas}}</h6>
             <p>Categoria:aqui va la categoria</p>
         </article>
         <!-- hasta aca -->
 
         <!-- recetas box -->
-        <section class="recetas-box">
-            <figure>
-                <img src="" alt=""> <!-- Agrega la imagen de la receta aquí -->
-                <article>
-                    <h6>Nombre receta</h6>
-                </article>
-                <a href="{{  url_for('recipe')   }}"><button>Ver receta</button></a>
+        <ul>
+            {% for receta in dicc_recetas %}
+                    <section class="recetas-box">
+                        <figure>
+                            <img src="" alt=""> <!-- Agrega la imagen de la receta aquí -->
+                            <article>
+                                <h6>{{receta["titulo"]}}</h6>
+                            </article>
+                            <a href="{{  url_for('recipe')   }}"><button>Ver receta</button></a>
+                        </figure>
+                    </section>
+            {% endfor %}
+        </ul>
+<!--        <section class="recetas-box">-->
+<!--            <figure>-->
+<!--                <img src="" alt=""> &lt;!&ndash; Agrega la imagen de la receta aquí &ndash;&gt;-->
+<!--                <article>-->
+<!--                    <h6>Nombre receta</h6>-->
+<!--                </article>-->
+<!--                <a href="{{  url_for('recipe')   }}"><button>Ver receta</button></a>-->
 
-            </figure>
-            <!-- Agrega más recetas según sea necesario -->
-        </section>
+<!--            </figure>-->
+<!--        </section>-->
 
 
 </body>

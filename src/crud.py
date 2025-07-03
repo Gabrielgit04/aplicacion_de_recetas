@@ -1,6 +1,11 @@
 from abc import ABC
 from database import DataBase
 
+"""
+****************************************************
+*  OPERACIONES BASICAS RELACIONADAS CON EL USUARIO:
+****************************************************
+"""
 class UserCrud(DataBase, ABC):
     def __init__(self):
         super().__init__()
@@ -75,6 +80,13 @@ class UserCrud(DataBase, ABC):
             print(f"ERROR: {e}")
             return False
 
+
+
+"""
+****************************************************
+*  OPERACIONES BASICAS RELACIONADAS CON EL ADMIN:
+****************************************************
+"""
 class RecipesCrud(DataBase, ABC):
     def __init__(self):
         super().__init__()
@@ -103,12 +115,11 @@ class RecipesCrud(DataBase, ABC):
 
     def get_recipe(self, _title):
         try:
-            query = f"SELECT * FROM recipes WHERE title LIKE %?%"
-            value = (_title,)
-            result = self.conn.execute(query, value).fetchone()
+            query = f"SELECT * FROM recipes WHERE title LIKE '%{_title}%'"
+            # value = f"%{(_title,)}$"
+            result = self.conn.execute(query).fetchall()
             if result is None:
                 return None
-
             return result
         except Exception as e:
             print(f"ERROR: {e}")

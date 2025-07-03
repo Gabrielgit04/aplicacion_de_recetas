@@ -26,10 +26,6 @@ def contacto():
     return render_template("contact.html")
 
 @app.route("/resultado_busqueda", methods = ['GET'])
-def search():
-    return render_template("search.html")
-
-@app.route("/resultado_busqueda", methods = ['GET'])
 def principal():
     return render_template("principal.html")
 
@@ -48,6 +44,10 @@ def bandeja():
 @app.route("/resultado_busqueda", methods = ['GET'])
 def empanada():
     return render_template("empanadas.html")
+
+@app.route("/resultado_busqueda", methods = ['GET'])
+def recipe():
+    return render_template("plantilla_receta.html")
 """
 ***************************
 *  APIS PARA LOS USUARIOS:
@@ -89,16 +89,18 @@ def verificar_usuario():
 """
 @app.route("/api/obtener_receta", methods = ['POST'])
 def obtener_receta_por_titulo():
-    data = request.get_json()
+    titulo = request.form["search"]
     operator = User()
-    result = operator.get_recipe(data['title'])
+    result = operator.get_recipe(titulo)
     if result is None:
         operator.db.close()
         return jsonify(None)
     claves = ("id", "titulo", "descripcion", "ingredientes", "pasos", "categoria", "id_usuario")
-    result_json = dict(zip(claves, result))
+    result_json = [dict(zip(claves, elementos)) for elementos in result]
     operator.db.close()
-    return jsonify(result_json)
+    print(result_json)
+    return render_template("search.html", numero_recetas = len(result_json),
+                           dicc_recetas = result_json)
 
 if __name__ == '__main__':
     try:
