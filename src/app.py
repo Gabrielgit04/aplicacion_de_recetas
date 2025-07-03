@@ -102,7 +102,8 @@ def verificar_usuario():
     passw = request.form["password"]
     result = operator.verific_user(user, passw)
     if result:
-        return render_template("principal.html", datos_usuario=result)
+        return render_template("principal.html", datos_usuario=result, dicc_recetas=obtener_recetas(),
+                               )
     else:
         return render_template('login.html', error="Credenciales incorrectas")
 """
@@ -113,7 +114,6 @@ def verificar_usuario():
 
 @app.route("/api/crear_receta_nueva", methods = ['POST'])
 def crear_receta():
-    print("hola")
     data = {
         "title" : request.form["nombre"],
         "descripcion": request.form["descripcion"],
@@ -154,6 +154,14 @@ def mostrar():
     data = request.form["datos"]
     return render_template("plantilla_receta.html", data= ast.literal_eval(data))
 
+@app.route('/api/mostrar_todas_recetas', methods = ['GET'])
+def obtener_recetas():
+    operator = User()
+    elementos = operator.get_all()
+    claves = ("id", "titulo", "descripcion", "ingredientes", "pasos", "categoria", "id_usuario")
+    result_json = [dict(zip(claves, elementos)) for elementos in elementos]
+    operator.db.close()
+    return result_json
 if __name__ == '__main__':
     try:
         app.run(debug=True)

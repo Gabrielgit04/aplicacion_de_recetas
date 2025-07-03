@@ -39,7 +39,7 @@
         <section class="menu-filtrado">
             <nav>
                 <ul>
-                    <li><a href="{{  url_for('principal')   }}" class="inicio">🏠Inicio</a></li>
+                    <li><a href="{{  url_for('principal')}}" class="inicio">🏠Inicio</a></li>
                     <li><button class="escoger">☕Desayunos</button></li>
                     <li><button class="escoger">🥘Almuerzos</button></li>
                     <li><button class="escoger">🍝Cenas</button></li>
@@ -57,55 +57,71 @@
                 siguiente nivel.</p>
         </div>
         <!-- hasta aca -->
-        <iframe src="{{url_for('iframe')}}" frameborder="0" class="show-box">
+        <!--<iframe src="{{url_for('iframe')}}" frameborder="0" class="show-box">-->
+         <ul  class="recetas-box">
+            {% for receta in dicc_recetas %}
+                    <section class="recetas-box">
+                        <figure>
+                            <img src="" alt=""> <!-- Agrega la imagen de la receta aquí -->
+                            <article>
+                                <h6>{{receta["titulo"]}}</h6>
+                            </article>
+                            <form action="http://127.0.0.1:5000/api/mostrar_receta" method="post">
+                                <input type="hidden" name="datos" value="{{receta}}">
+                                <button>Ver receta</button>
+                            </form>
+                        </figure>
+                    </section>
+            {% endfor %}
+        </ul>
 
-            <!-- recetas box -->
-        <section class="recetas-box">
-            <figure class="item-1">
-                <img src="../static/assets/imgs/img_platos/recetas/tequenos-de-queso-receta-venezolana.webp"
-                    alt="tequenos-de-queso-receta-venezolana">
-                <article>
-                    <h6>Tequeños</h6>
-                </article>
-                <a href="{{     url_for('tequeno')   }}"><button>Ver receta</button></a>
+<!--            &lt;!&ndash; recetas box &ndash;&gt;-->
+<!--        <section class="recetas-box">-->
+<!--            <figure class="item-1">-->
+<!--                <img src="../static/assets/imgs/img_platos/recetas/tequenos-de-queso-receta-venezolana.webp"-->
+<!--                    alt="tequenos-de-queso-receta-venezolana">-->
+<!--                <article>-->
+<!--                    <h6>Tequeños</h6>-->
+<!--                </article>-->
+<!--                <a href="{{     url_for('tequeno')   }}"><button>Ver receta</button></a>-->
 
-            </figure>
+<!--            </figure>-->
 
-            <figure class="item-2">
-                <img src="../static/assets/imgs/img_platos/recetas/empanadas-de-carne-argentinas-tradicionales.webp"
-                    alt="empanadas-de-carne-argentinas-tradicionales">
-                <article>
-                    <h6>Empanadas de carne argentina</h6>
-                </article>
-                <a href="{{     url_for('empanada')   }}"><button>Ver receta</button></a>
-            </figure>
+<!--            <figure class="item-2">-->
+<!--                <img src="../static/assets/imgs/img_platos/recetas/empanadas-de-carne-argentinas-tradicionales.webp"-->
+<!--                    alt="empanadas-de-carne-argentinas-tradicionales">-->
+<!--                <article>-->
+<!--                    <h6>Empanadas de carne argentina</h6>-->
+<!--                </article>-->
+<!--                <a href="{{     url_for('empanada')   }}"><button>Ver receta</button></a>-->
+<!--            </figure>-->
 
-            <figure class="item-3">
-                <img src="../static/assets/imgs/img_platos/recetas/arepa-reina-pepiada-venezolana-receta.webp"
-                    alt="arepa_reina_pepiada">
-                <article>
-                    <h6>Arepa reina pepiada</h6>
-                </article>
-                <a href="{{     url_for('arepa')   }}"><button>Ver receta</button></a>
+<!--            <figure class="item-3">-->
+<!--                <img src="../static/assets/imgs/img_platos/recetas/arepa-reina-pepiada-venezolana-receta.webp"-->
+<!--                    alt="arepa_reina_pepiada">-->
+<!--                <article>-->
+<!--                    <h6>Arepa reina pepiada</h6>-->
+<!--                </article>-->
+<!--                <a href="{{     url_for('arepa')   }}"><button>Ver receta</button></a>-->
 
-            </figure>
+<!--            </figure>-->
 
-            <figure class="item-4">
-                <img src="../static/assets/imgs/img_platos/recetas/bandeja-paisa-receta.webp" alt="bandeja-paisa-receta">
-                <article>
-                    <h6>Bandeja paisa</h6>
-                </article>
-                <a href="{{     url_for('bandeja')   }}"><button>Ver receta</button></a>
-                
-            </figure>
-            <figure>
-                <img src="" alt=""> <!-- Agrega la imagen de la receta aquí -->
-                <article>
-                    <h6>Nombre receta</h6>
-                </article>
-                <a href=""><button>Ver receta</button></a>
+<!--            <figure class="item-4">-->
+<!--                <img src="../static/assets/imgs/img_platos/recetas/bandeja-paisa-receta.webp" alt="bandeja-paisa-receta">-->
+<!--                <article>-->
+<!--                    <h6>Bandeja paisa</h6>-->
+<!--                </article>-->
+<!--                <a href="{{     url_for('bandeja')   }}"><button>Ver receta</button></a>-->
+<!--                -->
+<!--            </figure>-->
+<!--            <figure>-->
+<!--                <img src="" alt=""> &lt;!&ndash; Agrega la imagen de la receta aquí &ndash;&gt;-->
+<!--                <article>-->
+<!--                    <h6>Nombre receta</h6>-->
+<!--                </article>-->
+<!--                <a href=""><button>Ver receta</button></a>-->
 
-            </figure>
+<!--            </figure>-->
             
             <!-- Agrega más recetas según sea necesario -->
 
