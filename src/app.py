@@ -1,8 +1,7 @@
 import ast
-
-from flask import Flask, request, jsonify, Response, render_template
 from flask_cors import CORS
 from user import Admin, User
+from flask import Flask, request, jsonify, Response, render_template
 
 app = Flask("app")
 CORS(app)
@@ -14,6 +13,8 @@ CORS(app)
 
 @app.route("/", methods = ['GET'])
 def index():
+    iniciador = Admin()
+    iniciador.db_init()
     return render_template("index.html")
 
 @app.route("/login", methods = ['GET'])
@@ -98,7 +99,7 @@ def crear_usuario():
 
 @app.route('/api/verificar_usuario', methods = ['POST'])
 def verificar_usuario():
-    operator = Admin()
+    operator = User()
     user = request.form["username"]
     passw = request.form["password"]
     if operator.verific_user(user, passw):
@@ -113,17 +114,23 @@ def verificar_usuario():
 
 @app.route("/api/obtener_receta", methods = ['POST'])
 def obtener_receta_por_titulo():
-    titulo = request.form["search"]
+    global result
+    elemento_a_buscar = request.form["search"]
     operator = User()
-    result = operator.get_recipe(titulo)
-    if result is None:
-        operator.db.close()
-        return jsonify(None)
+    indices = ["title", "id_user"]
+    for indice in indices:
+        result = operator.get_recipe(indice, elemento_a_buscar)
+        print("INDICE:", indice)
+        print("RESULTADO: ", result)
+        if result is None and indice == "id_user":
+            operator.db.close()
+            return render_template("search.html")
+        if result:
+            break
     claves = ("id", "titulo", "descripcion", "ingredientes", "pasos", "categoria", "id_usuario")
     result_json = [dict(zip(claves, elementos)) for elementos in result]
     operator.db.close()
-    return render_template("search.html", numero_recetas = len(result_json),
-                           dicc_recetas = result_json)
+    return render_template("search.html", numero_recetas=len(result_json), dicc_recetas=result_json)
 
 @app.route("/api/mostrar_receta", methods = ['POST'])
 def mostrar():
@@ -132,6 +139,8 @@ def mostrar():
 
 if __name__ == '__main__':
     try:
+        ola = User()
+        print(ola.get_all())
         app.run(debug=True)
     except Exception as e:
         print(e)

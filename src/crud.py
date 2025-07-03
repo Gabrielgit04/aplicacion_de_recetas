@@ -56,19 +56,6 @@ class UserCrud(DataBase, ABC):
             print(f"ERROR: {e}")
             return False
 
-    def verific_user(self, _username, _password):
-        try:
-            query = "SELECT * FROM users WHERE username == ? and password == ?"
-            value = (_username, _password)
-            result = self.conn.execute(query, value).fetchone()
-            if result:
-                return True
-            else:
-                return False
-        except Exception as e:
-            print(f"ERROR: {e}")
-            return e
-
     def update(self, _data):
         try:
             query = "UPDATE users SET password = ? WHERE user == ?"
@@ -79,9 +66,6 @@ class UserCrud(DataBase, ABC):
         except Exception as e:
             print(f"ERROR: {e}")
             return False
-
-
-
 """
 ****************************************************
 *  OPERACIONES BASICAS RELACIONADAS CON EL ADMIN:
@@ -113,10 +97,9 @@ class RecipesCrud(DataBase, ABC):
             print(f"ERROR: {e}")
             return False
 
-    def get_recipe(self, _title):
+    def get_recipe(self, _parametro,_title):
         try:
-            query = f"SELECT * FROM recipes WHERE title LIKE '%{_title}%'"
-            # value = f"%{(_title,)}$"
+            query = f"SELECT * FROM recipes WHERE {_parametro} LIKE '%{_title}%'"
             result = self.conn.execute(query).fetchall()
             if result is None:
                 return None
