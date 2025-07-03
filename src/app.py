@@ -135,5 +135,6 @@ if __name__ == '__main__':
         app.run(debug=True)
     except Exception as e:
         print(e)
+    app.run(host='0.0.0.0',port=5000)
 
 
