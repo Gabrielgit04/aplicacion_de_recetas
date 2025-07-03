@@ -47,9 +47,44 @@ body{
 .search:focus::placeholder{
     color: transparent;
 }
-.span-perfil button{
-    background-color: white;
-    cursor: pointer;
+.span-perfil{
+    width: 13%;
+    
+    
+}
+summary{
+    color:rgb(14, 14, 14);
+    font-size: 14px;
+    text-align: center;
+    background-color: #DDDDDD;
+    border-radius: 7px 7px 0 0;
+    padding: 4px;
+}
+
+.span-perfil .menu{
+    background-color: #1212129a;
+    border-radius: 8px 8px 0 0;
+    transition: all ease .4s;
+}
+
+.menu a{
+    color: #FF7D1B;
+    text-decoration: none;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.menu a span{
+    gap: 5px;
+    padding: 4px;
+} 
+
+.menu a span:hover{
+    background-color: #d4c7c0;
+    border-radius: 0 7px 7px 0;
+    transition: all ease-in-out .4s;
+    scale: 1;
 }
 
 .container header button{
@@ -748,6 +783,14 @@ p{
 
     /* hasta aca search view */
 
+    .show-box{
+        width: 100%;
+        min-height: 200px;
+        height: fit-content;
+        padding: 10px;
+
+    }
+
 
 /* hasta aca */
 
@@ -792,7 +835,7 @@ p{
         letter-spacing: 2px;
         text-indent: 12.5px;
     }
-    .span-search button img{
+    /* .span-search button img{
         width: 20px;
         height: 20px;
         transform: translate(-43px, 32px);
@@ -806,7 +849,24 @@ p{
     .span-perfil button img{
         width: 30px;
         height: 30px;
+    } */
+    .span-perfil{
+        margin-right: 50px;
+        border: solid;
     }
+
+    .span-perfil .menu{
+        background-color: #DDDDDD;
+        padding: 4px;
+        border-radius: 10px;
+    }
+
+    .menu a{
+        color: #FF7D1B;
+        text-decoration: none;
+        font-size: 12px;
+    }
+
 
     .recetas-box{
         grid-template-columns: repeat(2,minmax(100px, 1fr));

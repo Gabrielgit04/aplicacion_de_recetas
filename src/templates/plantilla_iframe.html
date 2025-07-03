@@ -6,32 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/assets/css/principal.css">
     <link rel=" icon" href="../static/assets/imgs/logo.jpg" type="image/x-icon">
-    <title>Busqueda receta</title>
+    <title>Filtrar</title>
 </head>
 
 <body>
     <section class="container">
         <!-- header de la vista -->
-        <header>
-            <span class="span-search">
-                <form action="http://127.0.0.1:5000/api/obtener_receta" method="post">
-                    <button><img src="../static/assets/imgs/icon/search.png" alt="search"></button>
-                    <input type="search" name="search" class="search" placeholder="Buscar receta | autor">
-                </form>
-            </span>
 
-        </header>
-        <!-- hasta aca -->
-        <hr>
-        <span class="lineOne"></span>
+
         <!-- menu para filtrar -->
-        <section class="menu-filtrado">
-            <nav>
-                <ul>
-                    <li><a href="{{  url_for('principal')   }}" class="inicio">🏠Inicio</a></li>
-                </ul>
-            </nav>
-        </section>
         <!-- hasta aca -->
         <span class="lineTwo"></span>
         <!-- segundo header -->
@@ -44,7 +27,7 @@
         <!-- hasta aca -->
 
         <!-- recetas box -->
-        <ul  class="recetas-box">
+        <ul>
             {% for receta in dicc_recetas %}
                     <section class="recetas-box">
                         <figure>

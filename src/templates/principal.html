@@ -22,7 +22,11 @@
             </span>
 
             <div class="span-perfil">
-                <button><img src="../static/assets/imgs/icon/user.png" alt="user_icon"></button>
+                    <details class="menu">
+                        <summary>Mi cuenta</summary>
+                        <a href="{{url_for('perfil')}}"><span><img src="../static/assets/imgs/icon/user-square.svg" alt=""> Ir a mi perfil</span></a>
+                        <a href="{{url_for('index')}}"><span><img src="../static/assets/imgs/icon/logout.svg" alt=""> Cerrar sesion</span></a>
+                    </details>
             </div>
 
         </header>
@@ -38,7 +42,6 @@
                     <li><button class="escoger">🥘Almuerzos</button></li>
                     <li><button class="escoger">🍝Cenas</button></li>
                     <li><button class="escoger">🍰Postres</button></li>
-                    <li><button class="escoger">🥔Ingredientes</button></li>
                 </ul>
             </nav>
         </section>
@@ -52,8 +55,9 @@
                 siguiente nivel.</p>
         </div>
         <!-- hasta aca -->
+        <iframe src="{{url_for('iframe')}}" frameborder="0" class="show-box">
 
-        <!-- recetas box -->
+            <!-- recetas box -->
         <section class="recetas-box">
             <figure class="item-1">
                 <img src="../static/assets/imgs/img_platos/recetas/tequenos-de-queso-receta-venezolana.webp"
@@ -90,7 +94,7 @@
                     <h6>Bandeja paisa</h6>
                 </article>
                 <a href="{{     url_for('bandeja')   }}"><button>Ver receta</button></a>
-
+                
             </figure>
             <figure>
                 <img src="" alt=""> <!-- Agrega la imagen de la receta aquí -->
@@ -100,9 +104,9 @@
                 <a href=""><button>Ver receta</button></a>
 
             </figure>
-
-
+            
             <!-- Agrega más recetas según sea necesario -->
+        </iframe>
         </section>
 
         <section class="formulario">
@@ -148,6 +152,7 @@
         <input type="submit" value="➕ Agregar receta" onclick="showDialog()" class="agregar">
     </section>
     
+    <script src="{{url_for('principal_dialog')}}"></script>
+    <script src="{{    url_for('validate_inputs')    }}"></script>
 </body>
-
 </html>

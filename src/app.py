@@ -28,7 +28,7 @@ def registrarse():
 def contacto():
     return render_template("contact.html")
 
-@app.route("/resultado_busqueda", methods = ['GET'])
+@app.route("/principal", methods = ['GET'])
 def principal():
     return render_template("principal.html")
 
@@ -51,6 +51,26 @@ def empanada():
 @app.route("/receta_detallado", methods = ['GET'])
 def recipe():
     return render_template("plantilla_receta.html")
+
+@app.route("/plantilla-iframe", methods = ['GET'])
+def iframe():
+    return render_template("plantilla_iframe.html")
+
+@app.route("/profile", methods = ['GET'])
+def perfil():
+    return render_template("perfil_usuario.html")
+
+# validate js
+@app.route('/js-validation')
+def principal_dialog():
+    return render_template('public/js/principalViewFunction.js')
+
+@app.route('/js-validation-inputs')
+def validate_inputs():
+    return render_template('public/js/validation.js')
+
+
+
 """
 ***************************
 *  APIS PARA LOS USUARIOS:
@@ -115,4 +135,5 @@ if __name__ == '__main__':
         app.run(debug=True)
     except Exception as e:
         print(e)
+
 
