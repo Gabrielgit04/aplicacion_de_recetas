@@ -70,8 +70,6 @@ def principal_dialog():
 def validate_inputs():
     return render_template('public/js/validation.js')
 
-
-
 """
 ***************************
 *  APIS PARA LOS USUARIOS:
@@ -102,8 +100,9 @@ def verificar_usuario():
     operator = User()
     user = request.form["username"]
     passw = request.form["password"]
-    if operator.verific_user(user, passw):
-        return render_template("principal.html")
+    result = operator.verific_user(user, passw)
+    if result:
+        return render_template("principal.html", datos_usuario=result)
     else:
         return render_template('login.html', error="Credenciales incorrectas")
 """
@@ -111,6 +110,24 @@ def verificar_usuario():
 *  APIS PARA LAS RECETAS:
 ***************************
 """
+
+@app.route("/api/crear_receta_nueva", methods = ['POST'])
+def crear_receta():
+    print("hola")
+    data = {
+        "title" : request.form["nombre"],
+        "descripcion": request.form["descripcion"],
+        "ingredients": request.form["password"],
+        "steps": request.form["ingredientes"],
+        "category": request.form["instrucciones"],
+        "id_user": request.form["name_user"],
+    }
+    operator = User()
+    result = operator.agg(dict(data))
+    if result:
+        print("se creo la receta")
+    else:
+        print("no se creo")
 
 @app.route("/api/obtener_receta", methods = ['POST'])
 def obtener_receta_por_titulo():
@@ -139,8 +156,6 @@ def mostrar():
 
 if __name__ == '__main__':
     try:
-        ola = User()
-        print(ola.get_all())
         app.run(debug=True)
     except Exception as e:
         print(e)

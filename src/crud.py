@@ -79,7 +79,7 @@ class RecipesCrud(DataBase, ABC):
         try:
             query = ("INSERT INTO recipes (title, descripcion, ingredients, steps, category, id_user) "
                      "VALUES(?, ?, ?, ?, ?, ?)")
-            values = (_data['title'], _data['descrip'], _data['ingredi'], _data['steps'], _data['category'],
+            values = (_data['title'], _data['descripcion'], _data['ingredients'], _data['steps'], _data['category'],
                       _data['id_user'])
             self.conn.execute(query, values)
             self.db.commit()

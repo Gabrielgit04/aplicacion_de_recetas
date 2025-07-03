@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    <input type="hidden" name="name_user" value="{{datos_usuario[1]}}">
+    <input type="hidden" name="gmail_user" value="{{datos_usuario[3]}}">
     <section class="container">
         <!-- header de la vista -->
         <header>
@@ -106,8 +108,9 @@
             </figure>
             
             <!-- Agrega más recetas según sea necesario -->
-        </iframe>
+
         </section>
+        </iframe>
 
         <section class="formulario">
             <dialog class="dialog_add">
@@ -115,7 +118,7 @@
                     <button class="cerrar" onclick="hideDialog()">❌</button>
                     <h4>Agrega tu receta</h4>
                 </span>
-                <form autocomplete="off"  id="dialog">
+                <form autocomplete="off"  id="dialog" action="/api/crear_receta_nueva">
 
                     <div class="inputs">
                         <!-- <label for="nombre">Nombre de la receta:</label> -->
@@ -144,8 +147,8 @@
                     <input type="text" name="porcion" id="porcion" placeholder="Porciones">
                 </span>
                     <p id="message"></p>
-                    
-                    <button type="submit" class="save">Guardar</button>
+
+                    <button class="save">Guardar</button>
                 </form>
             </dialog>
         </section>

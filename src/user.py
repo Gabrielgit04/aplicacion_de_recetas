@@ -8,10 +8,7 @@ class User(RecipesCrud):
             query = "SELECT * FROM users WHERE username == ? and password == ?"
             value = (_username, _password)
             result = self.conn.execute(query, value).fetchone()
-            if result:
-                return True
-            else:
-                return False
+            return result
         except Exception as e:
             print(f"ERROR: {e}")
             return e
