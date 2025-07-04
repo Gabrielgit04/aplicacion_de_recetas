@@ -1,11 +1,15 @@
+import os
 import ast
 from flask_cors import CORS
 from user import Admin, User
+from werkzeug.utils import secure_filename
 from flask import Flask, request, jsonify, Response, render_template, session
 from flask import flash
 
 app = Flask("app")
 app.secret_key = "aaasssddd"
+UPLOAD_FOLDER = 'static/uploads'  # carpeta para guardar las imágenes
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 CORS(app)
 """
 ***************************
@@ -34,7 +38,8 @@ def contacto():
 
 @app.route("/principal", methods = ['GET'])
 def principal():
-    return render_template("principal.html", datos_usuario=session["usuario"], dicc_recetas=obtener_recetas())
+    return render_template("principal.html",
+                           datos_usuario=session["usuario"], dicc_recetas=obtener_recetas())
 
 @app.route("/receta_detallado", methods = ['GET'])
 def recipe():
@@ -46,7 +51,13 @@ def iframe():
 
 @app.route("/profile", methods = ['GET'])
 def perfil():
-    return render_template("perfil_usuario.html")
+    operator = User()
+    data = session["usuario"]
+    result = operator.get_recipe("id_user", data[1])
+    claves = ("id", "titulo", "descripcion", "ingredientes", "pasos", "categoria", "id_usuario", "img")
+    result_json = [dict(zip(claves, elementos)) for elementos in result]
+    return render_template("perfil_usuario.html", dato_usuario=data,
+                           dicc_recetas=result_json)
 
 @app.route("/recovery", methods = ['GET'])
 def recovery():
@@ -113,13 +124,25 @@ def crear_receta():
     # si alguien lee esto: perdi 30 minutos arreglando este error y porque la solucion fue incoherente y no entendible
     # le puse asi, no se que causaba el error pero haciendolo asi funciono. Si funciona no le muevas
     incoherencias = dict(request.form)
+    img = request.files["imagen"]
+    print(request.files)
+    if img:
+        nombre_seguro = secure_filename(img.filename)
+        ruta_guardado = os.path.join(app.config['UPLOAD_FOLDER'], nombre_seguro)
+        img.save(ruta_guardado)
+        ruta_en_db = ruta_guardado
+        print(ruta_en_db)
+    else:
+        ruta_en_db = None
+
     data = {
         "title" : request.form["nombre"],
         "descripcion": request.form["descripcion"],
         "ingredients": request.form["ingredientes"],
         "steps": request.form["instrucciones"],
         "category": incoherencias['categoria'],
-        "id_user": incoherencias["name_user"]
+        "id_user": incoherencias["name_user"],
+        "url_img": ruta_en_db
     }
     operator = User()
     result = operator.agg(data)
@@ -146,7 +169,7 @@ def obtener_receta_por_titulo():
             return render_template("search.html")
         if result:
             break
-    claves = ("id", "titulo", "descripcion", "ingredientes", "pasos", "categoria", "id_usuario")
+    claves = ("id", "titulo", "descripcion", "ingredientes", "pasos", "categoria", "id_usuario", "img")
     result_json = [dict(zip(claves, elementos)) for elementos in result]
     operator.db.close()
     return render_template("search.html", numero_recetas=len(result_json), dicc_recetas=result_json)
@@ -160,7 +183,7 @@ def mostrar():
 def obtener_recetas():
     operator = User()
     elementos = operator.get_all()
-    claves = ("id", "titulo", "descripcion", "ingredientes", "pasos", "categoria", "id_usuario")
+    claves = ("id", "titulo", "descripcion", "ingredientes", "pasos", "categoria", "id_usuario", "img")
     result_json = [dict(zip(claves, elementos)) for elementos in elementos]
     operator.db.close()
     return result_json
@@ -171,7 +194,7 @@ def obtener_receta_por_categoria():
     operator = User()
     result = operator.get_recipe("category", filtro['descripcion'])
     if result:
-        claves = ("id", "titulo", "descripcion", "ingredientes", "pasos", "categoria", "id_usuario")
+        claves = ("id", "titulo", "descripcion", "ingredientes", "pasos", "categoria", "id_usuario", "img")
         result_json = [dict(zip(claves, elementos)) for elementos in result]
         operator.db.close()
         return render_template("principal.html", datos_usuario=session["usuario"], dicc_recetas=result_json)
@@ -184,12 +207,8 @@ def obtener_receta_por_categoria():
 ***************************
 """
 
-
-
 if __name__ == '__main__':
     try:
         app.run(debug=True,host='0.0.0.0',port=5000)
     except Exception as e:
         print(e)
-
-

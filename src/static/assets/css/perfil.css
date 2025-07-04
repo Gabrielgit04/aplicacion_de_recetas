@@ -187,6 +187,74 @@ main{
     height: 130px;
     border-radius: 12px 0 0 12px;
 }
+
+.recetas-box{
+    display: grid;
+    grid-template-columns: repeat(4,minmax(100px, 1fr));
+    gap: 15px;
+    padding: 15px;
+}
+.recetas-box figure{
+    width: 190px;
+    height:150px;
+    margin-left: 30px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.349);
+}
+
+
+.recetas-box figure img{
+    width: 96%;
+    margin: 2px 4px;
+    height: 80px;
+    border: solid 1px white;
+    border-radius: 18px 18px 0 0;
+    object-fit: cover;
+}
+.recetas-box  figure article{
+    min-height: fit-content;
+    transform: translateY(-12px);
+}
+
+.recetas-box figure h6{
+    text-align: justify;
+    transform: translateY(5px);
+    text-indent: 6px;
+    font-size: 10px;
+    margin-top: 5px;
+    color: #000000da;
+}
+
+.recetas-box figure button{
+    width: 85%;
+    height: 20px;
+    padding: 2px 0;
+    font-weight: bold;
+    border-radius: 35px;
+    border: #FF7D1B;
+    background-color: #FF7D1B;
+    transform: translate(15px, -12px);
+    color: white;
+}
+.recetas-box figure:hover{
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.782);
+    transform: translateY(2px);
+    scale: 1.05;
+    transition: all ease-in-out .3s;
+    z-index: 1;
+}
+
+.recetas-box figure button:hover{
+    background-color: rgba(0, 0, 0, 0.745);
+    color: #FF7D1B;
+    text-shadow: 0 0 10px #FF7D1B;
+    transition: all ease-in-out .3s;
+    transform: translate(15px, -12px);
+    cursor: pointer;
+}
+
 /* recupear contrasena */
 /* hasta aca recuperar contrasena */
 

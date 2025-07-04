@@ -75,7 +75,7 @@
             {% for receta in dicc_recetas %}
                     <section class="recetas-box">
                         <figure>
-                            <img src="" alt=""> <!-- Agrega la imagen de la receta aquí -->
+                            <img src="{{url_for('static', filename='static/uploads/vegan-plate-lunch-with-organic-vegetables.jpg')}}" alt="">
                             <article>
                                 <h6>{{receta["titulo"]}}</h6>
                             </article>
@@ -97,8 +97,8 @@
                     <button class="cerrar" onclick="hideDialog()">❌</button>
                     <h4>Agrega tu receta</h4>
                 </span>
-                <form autocomplete="off"  id="dialog" action="/api/crear_receta_nueva" method="POST">
-                    <input type="hidden" name="name_user" value="Diego">
+                <form autocomplete="off"  id="dialog" action="/api/crear_receta_nueva" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="name_user" value="{{datos_usuario[1]}}">
                     <input type="hidden" name="gmail_user" value="{{datos_usuario[2]}}">
                     <div class="inputs">
                         <!-- <label for="nombre">Nombre de la receta:</label> -->
@@ -113,7 +113,7 @@
                         <textarea id="instrucciones" name="instrucciones" rows="4" placeholder="Instrucciones"></textarea>
                     </div>
                     <!-- <label for="categoria">Categoría:</label>-->
-                    <input type="file" id="imagen" name="imagen" accept="image/*" >
+                    <input type="file" id="imagen" name="imagen" accept="image/*">
                 <span>
 
                     <select id="categoria" name="categoria">
