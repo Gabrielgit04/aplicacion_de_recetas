@@ -13,7 +13,8 @@
 function showDialog() {
     
     const verifydialog = document.querySelector('.dialog_add');
-    const adddialog = document.querySelector('.agregar');
+    const adddialog = document.getElementById("update");
+//    const adddialog = document.querySelector('.agregar');
 
     adddialog.addEventListener('click', (event) => {
         event.preventDefault(); // Evita que el formulario se envíe

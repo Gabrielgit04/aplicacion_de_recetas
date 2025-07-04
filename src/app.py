@@ -8,7 +8,7 @@ from flask import flash
 
 app = Flask("app")
 app.secret_key = "aaasssddd"
-UPLOAD_FOLDER = 'static/uploads'  # carpeta para guardar las imágenes
+UPLOAD_FOLDER = 'static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 CORS(app)
 """

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/assets/css/perfil.css">
+    <script src="{{url_for('principal_dialog')}}"></script>
+    <script src="public/js/principalViewFunction.js"></script>
     <title>Perfil Usuario</title>
 </head>
 <body>
@@ -49,22 +51,58 @@
                             <article>
                                 <h6>{{receta["titulo"]}}</h6>
                             </article>
-                            <form action="http://127.0.0.1:5000/api/mostrar_receta" method="post">
                                 <input type="hidden" name="datos" value="{{receta}}">
-                                <button>Ver receta</button>
-                            </form>
+                                <button type="submit" value="Editar" onclick="showDialog()" id="update">Editar</button>
+                                <button>Eliminar</button>
                         </figure>
                     </section>
             {% endfor %}
         </ul>
+    </section>
 
-<!--        <div class="recipe-list">-->
-<!--            <img src="../static/assets/imgs/img_platos/cena.jpg" alt="">-->
-<!--                    <div class="recipe-item">-->
-<!--                        <h3>nombre receta</h3>-->
-<!--                        <p>descripcion</p>-->
-<!--                    </div>-->
-<!--        </div>-->
+    <section class="formulario">
+            <dialog class="dialog_add">
+                <span class="header-dialog">
+                    <button class="cerrar" onclick="hideDialog()">❌</button>
+                    <h4>Agrega tu receta</h4>
+                </span>
+                <form autocomplete="off"  id="dialog" action="/api/crear_receta_nueva" method="POST" enctype="multipart/form-data">
+                    <div class="inputs">
+                        <!-- <label for="nombre">Nombre de la receta:</label> -->
+                        <input type="text" id="nombre" name="nombre" id="nombre" placeholder="Nombre de la receta">
+
+                        <textarea id="descripcion" name="descripcion" rows="4" placeholder="Descripcion"></textarea>
+
+                        <!-- <label for="ingredientes">Ingredientes:</label> -->
+                        <textarea id="ingredientes" name="ingredientes" rows="4" placeholder="Ingredientes"></textarea>
+
+                        <!-- <label for="instrucciones">Instrucciones:</label> -->
+                        <textarea id="instrucciones" name="instrucciones" rows="4" placeholder="Instrucciones"></textarea>
+                    </div>
+                    <!-- <label for="categoria">Categoría:</label>-->
+                    <input type="file" id="imagen" name="imagen" accept="image/*">
+                <span>
+
+                    <select id="categoria" name="categoria">
+                        <option value="" disabled selected>Selecciona una categoría</option>
+                        <option value="desayuno">☕ Desayuno</option>
+                        <option value="almuerzo">🥘 Almuerzos</option>
+                        <option value="cena">🍝 Cenas</option>
+                        <option value="postre">🍰 Postres</option>
+                    </select>
+                </span>
+                {% with message = get_flashed_messages()%}
+                    {% if message %}
+                        {% for msg in message %}
+                        <div>
+                            <li>{{msg}}</li>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                    <button type="submit" class="save">Guardar</button>
+                </form>
+            </dialog>
     </section>
 </main>
     
