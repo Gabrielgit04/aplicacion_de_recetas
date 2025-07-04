@@ -36,7 +36,6 @@ def contacto():
 def principal():
     return render_template("principal.html", datos_usuario=session["usuario"], dicc_recetas=obtener_recetas())
 
-
 @app.route("/receta_detallado", methods = ['GET'])
 def recipe():
     return render_template("plantilla_receta.html")
@@ -165,6 +164,20 @@ def obtener_recetas():
     result_json = [dict(zip(claves, elementos)) for elementos in elementos]
     operator.db.close()
     return result_json
+
+@app.route("/api/obtener_receta_categoria", methods = ['POST'])
+def obtener_receta_por_categoria():
+    filtro = dict(request.form)
+    operator = User()
+    result = operator.get_recipe("category", filtro['descripcion'])
+    if result:
+        claves = ("id", "titulo", "descripcion", "ingredientes", "pasos", "categoria", "id_usuario")
+        result_json = [dict(zip(claves, elementos)) for elementos in result]
+        operator.db.close()
+        return render_template("principal.html", datos_usuario=session["usuario"], dicc_recetas=result_json)
+    else:
+        return render_template("principal.html", datos_usuario=session["usuario"], dicc_recetas=[])
+
 """
 ***************************
 *  FUNCIONES:

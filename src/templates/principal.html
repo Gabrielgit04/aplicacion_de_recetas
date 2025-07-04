@@ -36,17 +36,29 @@
         <hr>
         <span class="lineOne"></span>
         <!-- menu para filtrar -->
-        <section class="menu-filtrado">
-            <nav>
-                <ul>
-                    <li><a href="{{  url_for('principal')}}" class="inicio">🏠Inicio</a></li>
-                    <li><button class="escoger">☕Desayunos</button></li>
-                    <li><button class="escoger">🥘Almuerzos</button></li>
-                    <li><button class="escoger">🍝Cenas</button></li>
-                    <li><button class="escoger">🍰Postres</button></li>
-                </ul>
-            </nav>
-        </section>
+      <section class="menu-filtrado">
+    <form action="/api/obtener_receta_categoria" autocomplete="off" method="POST">
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{ url_for('principal') }}" class="inicio">🏠Inicio</a>
+                </li>
+                <li>
+                    <button type="submit" name="descripcion" value="desayuno" class="escoger">☕ Desayunos</button>
+                </li>
+                <li>
+                    <button type="submit" name="descripcion" value="almuerzo" class="escoger">🥘 Almuerzos</button>
+                </li>
+                <li>
+                    <button type="submit" name="descripcion" value="cena" class="escoger">🍝 Cenas</button>
+                </li>
+                <li>
+                    <button type="submit" name="descripcion" value="postre" class="escoger">🍰 Postres</button>
+                </li>
+            </ul>
+        </nav>
+    </form>
+</section>
         <!-- hasta aca -->
         <span class="lineTwo"></span>
         <!-- segundo header -->
@@ -58,6 +70,7 @@
         </div>
         <!-- hasta aca -->
 
+     
         <ul  class="recetas-box">
             {% for receta in dicc_recetas %}
                     <section class="recetas-box">
@@ -74,9 +87,6 @@
                     </section>
             {% endfor %}
         </ul>
-
-
-            
             <!-- Agrega más recetas según sea necesario -->
 
         </section>
