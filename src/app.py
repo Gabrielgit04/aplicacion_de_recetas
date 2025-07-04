@@ -1,19 +1,22 @@
 import ast
-
-from flask import Flask, request, jsonify, Response, render_template
 from flask_cors import CORS
 from user import Admin, User
+from flask import Flask, request, jsonify, Response, render_template, session
 
 app = Flask("app")
+app.secret_key = "aaasssddd"
 CORS(app)
 """
 ***************************
 *  TEMPLATES RENDER:
 ***************************
 """
-
+global informacion
+global lista_recetas
 @app.route("/", methods = ['GET'])
 def index():
+    iniciador = Admin()
+    iniciador.db_init()
     return render_template("index.html")
 
 @app.route("/login", methods = ['GET'])
@@ -30,7 +33,7 @@ def contacto():
 
 @app.route("/principal", methods = ['GET'])
 def principal():
-    return render_template("principal.html")
+    return render_template("principal.html", datos_usuario=session["usuario"], dicc_recetas=obtener_recetas())
 
 
 @app.route("/receta_detallado", methods = ['GET'])
@@ -62,8 +65,6 @@ def principal_dialog():
 def validate_inputs():
     return render_template('public/js/validation.js')
 
-
-
 """
 ***************************
 *  APIS PARA LOS USUARIOS:
@@ -91,11 +92,14 @@ def crear_usuario():
 
 @app.route('/api/verificar_usuario', methods = ['POST'])
 def verificar_usuario():
-    operator = Admin()
+    operator = User()
     user = request.form["username"]
     passw = request.form["password"]
-    if operator.verific_user(user, passw):
-        return render_template("principal.html")
+    informacion = operator.verific_user(user, passw)
+    lista_recetas = obtener_recetas()
+    if informacion:
+        session["usuario"] = informacion
+        return render_template("principal.html", datos_usuario=informacion, dicc_recetas=lista_recetas)
     else:
         return render_template('login.html', error="Credenciales incorrectas")
 """
@@ -104,24 +108,66 @@ def verificar_usuario():
 ***************************
 """
 
+@app.route("/api/crear_receta_nueva", methods = ['POST'])
+def crear_receta():
+    # si alguien lee esto: perdi 30 minutos arreglando este error y porque la solucion fue incoherente y no entendible
+    # le puse asi, no se que causaba el error pero haciendolo asi funciono. Si funciona no le muevas
+    incoherencias = dict(request.form)
+    data = {
+        "title" : request.form["nombre"],
+        "descripcion": request.form["descripcion"],
+        "ingredients": request.form["ingredientes"],
+        "steps": request.form["instrucciones"],
+        "category": incoherencias['categoria'],
+        "id_user": incoherencias["name_user"]
+    }
+    operator = User()
+    result = operator.agg(data)
+    if result:
+        return render_template("principal.html", datos_usuario=session["usuario"], dicc_recetas=obtener_recetas())
+    else:
+        print("no se creo")
+
 @app.route("/api/obtener_receta", methods = ['POST'])
 def obtener_receta_por_titulo():
-    titulo = request.form["search"]
+    global result
+    elemento_a_buscar = request.form["search"]
     operator = User()
-    result = operator.get_recipe(titulo)
-    if result is None:
-        operator.db.close()
-        return jsonify(None)
+    indices = ["title", "id_user"]
+    for indice in indices:
+        result = operator.get_recipe(indice, elemento_a_buscar)
+        print("INDICE:", indice)
+        print("RESULTADO: ", result)
+        if result is None and indice == "id_user":
+            operator.db.close()
+            return render_template("search.html")
+        if result:
+            break
     claves = ("id", "titulo", "descripcion", "ingredientes", "pasos", "categoria", "id_usuario")
     result_json = [dict(zip(claves, elementos)) for elementos in result]
     operator.db.close()
-    return render_template("search.html", numero_recetas = len(result_json),
-                           dicc_recetas = result_json)
+    return render_template("search.html", numero_recetas=len(result_json), dicc_recetas=result_json)
 
 @app.route("/api/mostrar_receta", methods = ['POST'])
 def mostrar():
     data = request.form["datos"]
     return render_template("plantilla_receta.html", data= ast.literal_eval(data))
+
+@app.route('/api/mostrar_todas_recetas', methods = ['GET'])
+def obtener_recetas():
+    operator = User()
+    elementos = operator.get_all()
+    claves = ("id", "titulo", "descripcion", "ingredientes", "pasos", "categoria", "id_usuario")
+    result_json = [dict(zip(claves, elementos)) for elementos in elementos]
+    operator.db.close()
+    return result_json
+"""
+***************************
+*  FUNCIONES:
+***************************
+"""
+
+
 
 if __name__ == '__main__':
     try:

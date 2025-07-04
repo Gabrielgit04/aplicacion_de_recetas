@@ -10,6 +10,7 @@
 </head>
 
 <body>
+
     <section class="container">
         <!-- header de la vista -->
         <header>
@@ -37,7 +38,7 @@
         <section class="menu-filtrado">
             <nav>
                 <ul>
-                    <li><a href="{{  url_for('principal')   }}" class="inicio">🏠Inicio</a></li>
+                    <li><a href="{{  url_for('principal')}}" class="inicio">🏠Inicio</a></li>
                     <li><button class="escoger">☕Desayunos</button></li>
                     <li><button class="escoger">🥘Almuerzos</button></li>
                     <li><button class="escoger">🍝Cenas</button></li>
@@ -55,6 +56,7 @@
                 siguiente nivel.</p>
         </div>
         <!-- hasta aca -->
+
         <iframe src="{{url_for('iframe')}}" frameborder="0" class="show-box">
 
             <!-- recetas box -->
@@ -67,10 +69,31 @@
                 <a href=""><button>Ver receta</button></a>
 
             </figure>
+=======
+        <!--<iframe src="{{url_for('iframe')}}" frameborder="0" class="show-box">-->
+         <ul  class="recetas-box">
+            {% for receta in dicc_recetas %}
+                    <section class="recetas-box">
+                        <figure>
+                            <img src="" alt=""> <!-- Agrega la imagen de la receta aquí -->
+                            <article>
+                                <h6>{{receta["titulo"]}}</h6>
+                            </article>
+                            <form action="http://127.0.0.1:5000/api/mostrar_receta" method="post">
+                                <input type="hidden" name="datos" value="{{receta}}">
+                                <button>Ver receta</button>
+                            </form>
+                        </figure>
+                    </section>
+            {% endfor %}
+        </ul>
+
+
             
             <!-- Agrega más recetas según sea necesario -->
-        </iframe>
+
         </section>
+        </iframe>
 
         <section class="formulario">
             <dialog class="dialog_add">
@@ -78,8 +101,9 @@
                     <button class="cerrar" onclick="hideDialog()">❌</button>
                     <h4>Agrega tu receta</h4>
                 </span>
-                <form autocomplete="off"  id="dialog">
-
+                <form autocomplete="off"  id="dialog" action="/api/crear_receta_nueva" method="POST">
+                    <input type="hidden" name="name_user" value="Diego">
+                    <input type="hidden" name="gmail_user" value="{{datos_usuario[2]}}">
                     <div class="inputs">
                         <!-- <label for="nombre">Nombre de la receta:</label> -->
                         <input type="text" id="nombre" name="nombre" id="nombre" placeholder="Nombre de la receta">
@@ -107,7 +131,7 @@
                     <input type="text" name="porcion" id="porcion" placeholder="Porciones">
                 </span>
                     <p id="message"></p>
-                    
+
                     <button type="submit" class="save">Guardar</button>
                 </form>
             </dialog>
@@ -116,6 +140,6 @@
     </section>
     
     <script src="{{url_for('principal_dialog')}}"></script>
-    <script src="{{    url_for('validate_inputs')    }}"></script>
+<!--<script src="{{    url_for('validate_inputs')    }}"></script>-->
 </body>
 </html>
