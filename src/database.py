@@ -15,14 +15,13 @@ class DataBase(ABC):
                      "password VARCHAR(15))")
 
             query_2 = ("CREATE TABLE IF NOT EXISTS recipes "
-                       "(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
-                       "title TEXT,"
-                       "descripcion TEXT,"
-                       "ingredients TEXT,"
-                       "steps TEXT,"
-                       "category TEXT,"
-                       "id_user TEXT NOT NULL,"
-                       "url_img TEXT)")
+                     "(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+                     "title TEXT,"
+                     "descripcion TEXT,"
+                     "ingredients TEXT,"
+                     "steps TEXT,"
+                     "category TEXT,"
+                     "id_user INTERGER NOT NULL)")
             self.conn.execute(query)
             self.conn.execute(query_2)
             self.db.commit()
