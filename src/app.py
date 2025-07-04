@@ -4,6 +4,7 @@ from flask_cors import CORS
 from user import Admin, User
 from werkzeug.utils import secure_filename
 from flask import Flask, request, jsonify, Response, render_template, session
+from flask import flash
 
 app = Flask("app")
 app.secret_key = "aaasssddd"
@@ -146,9 +147,12 @@ def crear_receta():
     operator = User()
     result = operator.agg(data)
     if result:
+        message = "Receta creada correctamente"
+        flash(message, "success")
         return render_template("principal.html", datos_usuario=session["usuario"], dicc_recetas=obtener_recetas())
     else:
-        print("no se creo")
+        flash("Error al crear la receta", "error")
+        return render_template("principal.html")
 
 @app.route("/api/obtener_receta", methods = ['POST'])
 def obtener_receta_por_titulo():
