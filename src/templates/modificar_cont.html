@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/assets/css/styles.css">
+    <link rel=" icon" href="assets/imgs/logo.jpg" type="image/x-icon">
+
+    <title>Cambiar contraseña</title>
+</head>
+<body>
+
+    <section class="contact-container">
+        
+        <div class="presentation-box-contact">
+            <figure>
+                <img src="{{ url_for('static', filename='assets/imgs/logo.jpg') }}" alt="logo" id="img-logo-contact">
+            </figure>
+            <h2>Delicias de Cocina</h2>
+            
+        </div>
+
+        <div class="change-box">
+            <form autocomplete="off" action="" method="post">
+                <h3>Cambia tu contraseña</h3>
+                <div>
+                    <input type="password" name="change-password" placeholder="Nueva contraseña" required>
+                    <input type="password" name="rep-password" id="correo" placeholder="repite tu nueva contraseña" required>
+                </div>
+                <p id="validacion"></p>
+                <button>Enviar</button>
+            </form>
+            <a href="{{url_for('perfil')}}" class="home">Volver a mi perfil</a>
+        </div>
+
+    </section>
+    
+</body>
+</html>

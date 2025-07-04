@@ -35,21 +35,6 @@ def contacto():
 def principal():
     return render_template("principal.html", datos_usuario=session["usuario"], dicc_recetas=obtener_recetas())
 
-@app.route("/resultado_busqueda", methods = ['GET'])
-def tequeno():
-    return render_template("tequenos.html")
-
-@app.route("/resultado_busqueda", methods = ['GET'])
-def arepa():
-    return render_template("arepa.html")
-
-@app.route("/resultado_busqueda", methods = ['GET'])
-def bandeja():
-    return render_template("bandeja.html")
-
-@app.route("/resultado_busqueda", methods = ['GET'])
-def empanada():
-    return render_template("empanadas.html")
 
 @app.route("/receta_detallado", methods = ['GET'])
 def recipe():
@@ -62,6 +47,14 @@ def iframe():
 @app.route("/profile", methods = ['GET'])
 def perfil():
     return render_template("perfil_usuario.html")
+
+@app.route("/recovery", methods = ['GET'])
+def recovery():
+    return render_template("recovery_password.html")
+
+@app.route("/change", methods = ['GET'])
+def modify():
+    return render_template("modificar_cont.html")
 
 # validate js
 @app.route('/js-validation')
@@ -178,9 +171,8 @@ def obtener_recetas():
 
 if __name__ == '__main__':
     try:
-        app.run(debug=True)
+        app.run(debug=True,host='0.0.0.0',port=5000)
     except Exception as e:
         print(e)
-    app.run(host='0.0.0.0',port=5000)
 
 
