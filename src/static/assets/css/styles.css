@@ -62,8 +62,10 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin: 0 100px 0 0;
     transition: all ease .2s;
+    gap: 15px;
 }
 
 .input_area,.input_password{
@@ -178,7 +180,7 @@ button:active{
     padding: 4px;
 
 }
-.register_box{
+.register_box,.recovery-box{
     width: 450px;
     height: 450px;
     background-color: whitesmoke;
@@ -188,11 +190,23 @@ button:active{
     justify-content: center;
 
 }
+
+.recovery-box{
+    height: 400px;
+}
+
 .register_box h2{
     color:#FF7D1B;
     margin-top: 5px;
     transform: translateY(5px);
     font-size: 30px;
+}
+.recovery-box h2{
+    color:#FF7D1B;
+    margin-top: 10px;
+    transform: translateY(5px);
+    font-size: 27px;
+
 }
 .link_login{
     letter-spacing: 1.5px;
@@ -218,13 +232,16 @@ button:active{
     grid-template-columns: 1fr 1.5fr;
 }
 
-.contact-box{
+.contact-box,.change-box{
     height: 99%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 15px;
 }
-.contact-box form{
+
+.contact-box form,.change-box form{
     display: flex;
     border-radius: 10px;
     width: 70%;
@@ -234,8 +251,12 @@ button:active{
     background-color: white;
     gap: 1px;
 }
+.change-box form{
+    height: 50%;
+}
 
-.contact-box form div{
+
+.contact-box form div,.change-box form div{
     display: flex;
     flex-direction: column;
     gap: 12px; 
@@ -252,6 +273,16 @@ button:active{
     background-color: #DDDDDD;
     text-indent: 7px;
 }
+.change-box form div input{
+    line-height: 30px;
+    border-radius: 8px;
+    width: 85%;
+    border: solid #DDDDDD;
+    background-color: #DDDDDD;
+    text-indent: 7px;
+
+
+}
 
 textarea{
     resize: none;
@@ -260,19 +291,25 @@ textarea{
 .contact-box form div input:focus::placeholder, textarea:focus::placeholder{
     opacity: 0;
 }
+.change-box form div input:focus::placeholder{
+    opacity: 0;
+}
 
 .contact-box form div input:focus, textarea:focus{
     outline: none;
 }
+.change-box form div input:focus{
+    outline: none;
+}
 
-.contact-box form h3{
+.contact-box form h3,.change-box form h3{
     text-align: center;
     letter-spacing: 2px;
     font-size: 24px;
     color: #FF7D1B;
 }
 
-.contact-box button{
+.contact-box button,.change-box button{
     margin-top: 10px;
     margin-left:90px;
 }
@@ -311,6 +348,15 @@ textarea{
 
 
 /* hasta aca los estilos de contacto view */
+
+.home{
+    font-size: 20px;
+    text-decoration: none;
+    background-color: #DDDDDD;
+    color: #222222;
+    padding: 10px;
+    border-radius: 10px;
+}
 
 
 /* responsive design */
@@ -411,6 +457,27 @@ textarea{
     }
 
 }
+
+.send-code{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.send-code .input_form{
+    width: 45%;
+}
+.send-code button{
+    width: 150px;
+    transform: translateY(15px);
+    border-radius: 12px;
+}
+.send-code .input_form .entry{
+    text-indent: 5px;
+}
+
+
+
 
 
 
