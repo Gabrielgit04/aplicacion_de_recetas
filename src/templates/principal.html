@@ -10,8 +10,7 @@
 </head>
 
 <body>
-    <input type="hidden" name="name_user" value="{{datos_usuario[1]}}">
-    <input type="hidden" name="gmail_user" value="{{datos_usuario[3]}}">
+
     <section class="container">
         <!-- header de la vista -->
         <header>
@@ -134,8 +133,9 @@
                     <button class="cerrar" onclick="hideDialog()">❌</button>
                     <h4>Agrega tu receta</h4>
                 </span>
-                <form autocomplete="off"  id="dialog" action="/api/crear_receta_nueva">
-
+                <form autocomplete="off"  id="dialog" action="/api/crear_receta_nueva" method="POST">
+                    <input type="hidden" name="name_user" value="Diego">
+                    <input type="hidden" name="gmail_user" value="{{datos_usuario[2]}}">
                     <div class="inputs">
                         <!-- <label for="nombre">Nombre de la receta:</label> -->
                         <input type="text" id="nombre" name="nombre" id="nombre" placeholder="Nombre de la receta">
@@ -164,7 +164,7 @@
                 </span>
                     <p id="message"></p>
 
-                    <button class="save">Guardar</button>
+                    <button type="submit" class="save">Guardar</button>
                 </form>
             </dialog>
         </section>
@@ -172,6 +172,6 @@
     </section>
     
     <script src="{{url_for('principal_dialog')}}"></script>
-    <script src="{{    url_for('validate_inputs')    }}"></script>
+<!--<script src="{{    url_for('validate_inputs')    }}"></script>-->
 </body>
 </html>

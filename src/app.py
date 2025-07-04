@@ -1,16 +1,18 @@
 import ast
 from flask_cors import CORS
 from user import Admin, User
-from flask import Flask, request, jsonify, Response, render_template
+from flask import Flask, request, jsonify, Response, render_template, session
 
 app = Flask("app")
+app.secret_key = "aaasssddd"
 CORS(app)
 """
 ***************************
 *  TEMPLATES RENDER:
 ***************************
 """
-
+global informacion
+global lista_recetas
 @app.route("/", methods = ['GET'])
 def index():
     iniciador = Admin()
@@ -31,7 +33,7 @@ def contacto():
 
 @app.route("/principal", methods = ['GET'])
 def principal():
-    return render_template("principal.html")
+    return render_template("principal.html", datos_usuario=session["usuario"], dicc_recetas=obtener_recetas())
 
 @app.route("/resultado_busqueda", methods = ['GET'])
 def tequeno():
@@ -100,10 +102,11 @@ def verificar_usuario():
     operator = User()
     user = request.form["username"]
     passw = request.form["password"]
-    result = operator.verific_user(user, passw)
-    if result:
-        return render_template("principal.html", datos_usuario=result, dicc_recetas=obtener_recetas(),
-                               )
+    informacion = operator.verific_user(user, passw)
+    lista_recetas = obtener_recetas()
+    if informacion:
+        session["usuario"] = informacion
+        return render_template("principal.html", datos_usuario=informacion, dicc_recetas=lista_recetas)
     else:
         return render_template('login.html', error="Credenciales incorrectas")
 """
@@ -114,18 +117,21 @@ def verificar_usuario():
 
 @app.route("/api/crear_receta_nueva", methods = ['POST'])
 def crear_receta():
+    # si alguien lee esto: perdi 30 minutos arreglando este error y porque la solucion fue incoherente y no entendible
+    # le puse asi, no se que causaba el error pero haciendolo asi funciono. Si funciona no le muevas
+    incoherencias = dict(request.form)
     data = {
         "title" : request.form["nombre"],
         "descripcion": request.form["descripcion"],
-        "ingredients": request.form["password"],
-        "steps": request.form["ingredientes"],
-        "category": request.form["instrucciones"],
-        "id_user": request.form["name_user"],
+        "ingredients": request.form["ingredientes"],
+        "steps": request.form["instrucciones"],
+        "category": incoherencias['categoria'],
+        "id_user": incoherencias["name_user"]
     }
     operator = User()
-    result = operator.agg(dict(data))
+    result = operator.agg(data)
     if result:
-        print("se creo la receta")
+        return render_template("principal.html", datos_usuario=session["usuario"], dicc_recetas=obtener_recetas())
     else:
         print("no se creo")
 
@@ -162,6 +168,14 @@ def obtener_recetas():
     result_json = [dict(zip(claves, elementos)) for elementos in elementos]
     operator.db.close()
     return result_json
+"""
+***************************
+*  FUNCIONES:
+***************************
+"""
+
+
+
 if __name__ == '__main__':
     try:
         app.run(debug=True)
