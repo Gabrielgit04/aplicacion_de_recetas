@@ -35,17 +35,29 @@
         <hr>
         <span class="lineOne"></span>
         <!-- menu para filtrar -->
-        <section class="menu-filtrado">
-            <nav>
-                <ul>
-                    <li><a href="{{  url_for('principal')}}" class="inicio">🏠Inicio</a></li>
-                    <li><button class="escoger">☕Desayunos</button></li>
-                    <li><button class="escoger">🥘Almuerzos</button></li>
-                    <li><button class="escoger">🍝Cenas</button></li>
-                    <li><button class="escoger">🍰Postres</button></li>
-                </ul>
-            </nav>
-        </section>
+      <section class="menu-filtrado">
+    <form action="/api/obtener_receta_categoria" autocomplete="off" method="POST">
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{ url_for('principal') }}" class="inicio">🏠Inicio</a>
+                </li>
+                <li>
+                    <button type="submit" name="descripcion" value="desayuno" class="escoger">☕ Desayunos</button>
+                </li>
+                <li>
+                    <button type="submit" name="descripcion" value="almuerzo" class="escoger">🥘 Almuerzos</button>
+                </li>
+                <li>
+                    <button type="submit" name="descripcion" value="cena" class="escoger">🍝 Cenas</button>
+                </li>
+                <li>
+                    <button type="submit" name="descripcion" value="postre" class="escoger">🍰 Postres</button>
+                </li>
+            </ul>
+        </nav>
+    </form>
+</section>
         <!-- hasta aca -->
         <span class="lineTwo"></span>
         <!-- segundo header -->
@@ -73,55 +85,6 @@
                     </section>
             {% endfor %}
         </ul>
-
-<!--            &lt;!&ndash; recetas box &ndash;&gt;-->
-<!--        <section class="recetas-box">-->
-<!--            <figure class="item-1">-->
-<!--                <img src="../static/assets/imgs/img_platos/recetas/tequenos-de-queso-receta-venezolana.webp"-->
-<!--                    alt="tequenos-de-queso-receta-venezolana">-->
-<!--                <article>-->
-<!--                    <h6>Tequeños</h6>-->
-<!--                </article>-->
-<!--                <a href="{{     url_for('tequeno')   }}"><button>Ver receta</button></a>-->
-
-<!--            </figure>-->
-
-<!--            <figure class="item-2">-->
-<!--                <img src="../static/assets/imgs/img_platos/recetas/empanadas-de-carne-argentinas-tradicionales.webp"-->
-<!--                    alt="empanadas-de-carne-argentinas-tradicionales">-->
-<!--                <article>-->
-<!--                    <h6>Empanadas de carne argentina</h6>-->
-<!--                </article>-->
-<!--                <a href="{{     url_for('empanada')   }}"><button>Ver receta</button></a>-->
-<!--            </figure>-->
-
-<!--            <figure class="item-3">-->
-<!--                <img src="../static/assets/imgs/img_platos/recetas/arepa-reina-pepiada-venezolana-receta.webp"-->
-<!--                    alt="arepa_reina_pepiada">-->
-<!--                <article>-->
-<!--                    <h6>Arepa reina pepiada</h6>-->
-<!--                </article>-->
-<!--                <a href="{{     url_for('arepa')   }}"><button>Ver receta</button></a>-->
-
-<!--            </figure>-->
-
-<!--            <figure class="item-4">-->
-<!--                <img src="../static/assets/imgs/img_platos/recetas/bandeja-paisa-receta.webp" alt="bandeja-paisa-receta">-->
-<!--                <article>-->
-<!--                    <h6>Bandeja paisa</h6>-->
-<!--                </article>-->
-<!--                <a href="{{     url_for('bandeja')   }}"><button>Ver receta</button></a>-->
-<!--                -->
-<!--            </figure>-->
-<!--            <figure>-->
-<!--                <img src="" alt=""> &lt;!&ndash; Agrega la imagen de la receta aquí &ndash;&gt;-->
-<!--                <article>-->
-<!--                    <h6>Nombre receta</h6>-->
-<!--                </article>-->
-<!--                <a href=""><button>Ver receta</button></a>-->
-
-<!--            </figure>-->
-            
             <!-- Agrega más recetas según sea necesario -->
 
         </section>
