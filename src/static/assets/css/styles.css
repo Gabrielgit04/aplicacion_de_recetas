@@ -30,7 +30,8 @@ body{
 
 .login_box{
     width: 450px;
-    height: 380px;
+    height: fit-content;
+    padding: 20px;
     background-color: whitesmoke;
     border-radius: 15px;
     border: solid whitesmoke;
@@ -180,9 +181,10 @@ button:active{
     padding: 4px;
 
 }
-.register_box,.recovery-box{
+.register_box{
     width: 450px;
-    height: 450px;
+    height: fit-content;
+    padding: 8px;
     background-color: whitesmoke;
     border-radius: 15px;
     border: solid whitesmoke;
@@ -193,6 +195,13 @@ button:active{
 
 .recovery-box{
     height: 400px;
+    width: 450px;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    border: solid whitesmoke;
+    text-align: center;
+    justify-content: center;
+
 }
 
 .register_box h2{

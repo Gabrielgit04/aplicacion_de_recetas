@@ -34,19 +34,21 @@
                     </div>
                     {% endif %}
                     <div class="input_area">
-                        <input type="text" name="username" id="user" class="entry" placeholder="Usuario | Max 30 caracteres">
+                        <input type="text" name="username" id="user" class="entry" placeholder="Usuario | Max 15 caracteres" minlength="3" maxlength="15" pattern="/^[a-zA-Z0-9_]{3,15}$/" title="Se permiten letras, numeros y guines bajos, y la longitud debe ser de 3 a 15 caracteres" required>
                         <div class="labelline"><span><img src="{{ url_for('static', filename='assets/imgs/icon/icon_user.png') }}" alt="icon"
                                     class="icon_user"></span></div>
                     </div>
-                    <p id="validatp"></p>
+                    <p id="validatp" style="font-size: 9px;color: #d8000c;"></p>
 
                     <div class="input_password">
                         <input type="password" id="password" class="entry_pass" name="password"
-                            placeholder="Contraseña | Max 15 caracteres" >
+                            placeholder="Contraseña | Max 15 caracteres" minlength="8" maxlength="15" pattern="^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$" title="La contraseña debe contener: Al menos un letra minuscula, al menos un numero, al menos un caracter especial y de 8 a 15 caracteres." required >
                         <div class="labelline_pass"><span><img src="{{ url_for('static', filename='assets/imgs/icon/icons8-lock-48.png') }}" alt="icon"
                                     class="icon_user"></span>
                         </div>
                     </div>
+                    <p id="validatp" style="font-size: 9px;color: #d8000c;"></p>
+
                     <article>
                         <a href="{{url_for('recovery')}}">¿Olvido su contraseña?</a>
                     </article>
@@ -61,6 +63,31 @@
 
         </div>
     </section>
+
+    <script>
+        // Validación del formulario de inicio de sesión
+        document.getElementById('formLogin').addEventListener('submit', function(event) {
+            const user = document.getElementById('user').value;
+            const password = document.getElementById('password').value;
+            const validatp = document.getElementById('validatp');
+
+            // Validar el campo de usuario
+            if (!/^[a-zA-Z0-9_]{3,15}$/.test(user)) {
+                validatp.textContent = 'El usuario debe contener solo letras, números y guiones bajos, y tener entre 3 y 15 caracteres.';
+                event.preventDefault();
+                return;
+            }
+
+            // Validar el campo de contraseña
+            else if (!/^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/.test(password)) {
+                validatp.textContent = 'La contraseña debe contener al menos una letra minúscula, un número, un carácter especial y tener entre 8 y 15 caracteres.';
+                event.preventDefault();
+                return;
+            }
+
+            validatp.textContent = ''; // Limpiar mensaje de error si todo es válido
+        });
+    </script>
 
 </body>
 
