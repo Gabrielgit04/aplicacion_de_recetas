@@ -47,6 +47,14 @@ def iframe():
 def perfil():
     return render_template("perfil_usuario.html")
 
+@app.route("/recovery", methods = ['GET'])
+def recovery():
+    return render_template("recovery_password.html")
+
+@app.route("/change", methods = ['GET'])
+def modify():
+    return render_template("modificar_cont.html")
+
 # validate js
 @app.route('/js-validation')
 def principal_dialog():
@@ -176,9 +184,8 @@ def obtener_receta_por_categoria():
 
 if __name__ == '__main__':
     try:
-        app.run(debug=True)
+        app.run(debug=True,host='0.0.0.0',port=5000)
     except Exception as e:
         print(e)
-    app.run(host='0.0.0.0',port=5000)
 
 

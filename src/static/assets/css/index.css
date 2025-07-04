@@ -211,6 +211,99 @@ button a:hover{
     color: antiquewhite;
 }
 
+.recuperar-contain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100dvh;
+}
+
+.recuperar-contain div form{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 450px;
+    height:fit-content;
+    border-radius: 10px;
+    transform: translateX(-100px);
+    gap: 15px;
+    padding: 20px;
+    text-align: center;
+    
+
+}
+.user-header{
+    height: 40px;
+}
+input[type="email"]{
+    line-height: 35px;
+    border-radius: 7px;
+    background-color: rgb(220, 218, 216);
+    border: solid  1px darkslategray;
+    text-indent: 10px;
+}
+
+input[type="email"]::placeholder{
+    text-indent: 10px;
+    letter-spacing: 1.2px;
+}
+input[type="email"]:focus::placeholder{
+    opacity: 0;
+}
+.recuperar-contain article p{
+    text-align: justify;
+}
+
+.recuperar-contain h2{
+    text-shadow: 0 0 6px#FF7D1B;
+}
+
+.recuperar-contain button{
+    margin-left: 130px;
+    cursor: pointer;
+    background-color: #FF7D1B ;
+
+}
+
+.volver{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 8px;
+    border: solid 1px rgba(0, 0, 0, 0.707);
+    padding: 4px 10px ;
+    gap: 5px;
+    width: 130px;
+    height: 20px;
+    margin-left: 20px;
+    
+}
+
+
+.volver a{
+    text-decoration: none;
+    font-size: 12px;
+    margin-left:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.915);
+}
+
+.volver:hover{
+    background-color: #DDDDDD;
+    cursor: pointer;
+    transition: all ease .4s;
+}
+
+.volver a img{
+    animation: arrow_move 800ms infinite;
+}
+
+
 /* //importando fuente */
 @font-face {
     font-family: "Inter";
@@ -307,6 +400,13 @@ button a:hover{
     .menu figure:hover{
         z-index: 1;
     }
+}
+/* animation */
+@keyframes arrow_move{
+    to{
+        transform: translateX(-20px);
+    }
+
 }
 
 
