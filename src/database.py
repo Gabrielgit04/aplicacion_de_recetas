@@ -21,7 +21,8 @@ class DataBase(ABC):
                        "ingredients TEXT,"
                        "steps TEXT,"
                        "category TEXT,"
-                       "id_user INTERGER NOT NULL)")
+                       "id_user TEXT NOT NULL,"
+                       "url_img TEXT)")
             self.conn.execute(query)
             self.conn.execute(query_2)
             self.db.commit()

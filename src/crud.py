@@ -77,10 +77,10 @@ class RecipesCrud(DataBase, ABC):
 
     def agg(self, _data):
         try:
-            query = ("INSERT INTO recipes (title, descripcion, ingredients, steps, category, id_user) "
-                     "VALUES(?, ?, ?, ?, ?, ?)")
+            query = ("INSERT INTO recipes (title, descripcion, ingredients, steps, category, id_user, url_img) "
+                     "VALUES(?, ?, ?, ?, ?, ?, ?)")
             values = (_data['title'], _data['descripcion'], _data['ingredients'], _data['steps'], _data['category'],
-                      _data['id_user'])
+                      _data['id_user'], _data['url_img'])
             self.conn.execute(query, values)
             self.db.commit()
             return True

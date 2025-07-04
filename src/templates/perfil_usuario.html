@@ -26,9 +26,8 @@
                 <img src="../static/assets/imgs/icon/user-animate-removebg-preview.png" alt="user_icon">
             </figure>
             <article class="profile-info">
-                <h3>nombre usuario</h3>
-                <p>email usuario</p>
-                <p>Rol: </p>
+                <h3>{{dato_usuario[1]}}</h3>
+                <p>{{dato_usuario[2]}}</p>
             </article>
         </div>
 
@@ -42,14 +41,30 @@
 <main>
     <section class="user-details">
         <h2>Mis recetas</h2>
+        <ul  class="recetas-box">
+            {% for receta in dicc_recetas %}
+                    <section class="recetas-box">
+                        <figure>
+                            <img src="" alt=""> <!-- Agrega la imagen de la receta aquí -->
+                            <article>
+                                <h6>{{receta["titulo"]}}</h6>
+                            </article>
+                            <form action="http://127.0.0.1:5000/api/mostrar_receta" method="post">
+                                <input type="hidden" name="datos" value="{{receta}}">
+                                <button>Ver receta</button>
+                            </form>
+                        </figure>
+                    </section>
+            {% endfor %}
+        </ul>
 
-        <div class="recipe-list">
-            <img src="../static/assets/imgs/img_platos/cena.jpg" alt="">
-                    <div class="recipe-item">
-                        <h3>nombre receta</h3>
-                        <p>descripcion</p>
-                    </div>
-        </div>
+<!--        <div class="recipe-list">-->
+<!--            <img src="../static/assets/imgs/img_platos/cena.jpg" alt="">-->
+<!--                    <div class="recipe-item">-->
+<!--                        <h3>nombre receta</h3>-->
+<!--                        <p>descripcion</p>-->
+<!--                    </div>-->
+<!--        </div>-->
     </section>
 </main>
     
