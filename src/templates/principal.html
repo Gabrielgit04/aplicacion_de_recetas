@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/assets/css/principal.css">
     <link rel=" icon" href="../static/assets/imgs/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../static/assets/css/principal.css">
+
     <title>Delicias de cocina</title>
 </head>
 
@@ -57,21 +58,7 @@
         </div>
         <!-- hasta aca -->
 
-        <iframe src="{{url_for('iframe')}}" frameborder="0" class="show-box">
-
-            <!-- recetas box -->
-        <section class="recetas-box">
-            <figure>
-                <img src="" alt=""> <!-- Agrega la imagen de la receta aquí -->
-                <article>
-                    <h6>Nombre receta</h6>
-                </article>
-                <a href=""><button>Ver receta</button></a>
-
-            </figure>
-=======
-        <!--<iframe src="{{url_for('iframe')}}" frameborder="0" class="show-box">-->
-         <ul  class="recetas-box">
+        <ul  class="recetas-box">
             {% for receta in dicc_recetas %}
                     <section class="recetas-box">
                         <figure>
@@ -93,7 +80,6 @@
             <!-- Agrega más recetas según sea necesario -->
 
         </section>
-        </iframe>
 
         <section class="formulario">
             <dialog class="dialog_add">
@@ -130,7 +116,15 @@
 
                     <input type="text" name="porcion" id="porcion" placeholder="Porciones">
                 </span>
-                    <p id="message"></p>
+                {% with message = get_flashed_messages()%}
+                    {% if message %}
+                        {% for msg in message %}
+                        <div>
+                            <li>{{msg}}</li>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
 
                     <button type="submit" class="save">Guardar</button>
                 </form>
@@ -138,8 +132,10 @@
         </section>
         <input type="submit" value="➕ Agregar receta" onclick="showDialog()" class="agregar">
     </section>
-    
+
+
     <script src="{{url_for('principal_dialog')}}"></script>
+    <script src="public/js/principalViewFunction.js"></script>
 <!--<script src="{{    url_for('validate_inputs')    }}"></script>-->
 </body>
 </html>
